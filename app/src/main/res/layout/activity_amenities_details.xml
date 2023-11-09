@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".UsersViewPost.AmenitiesDetails">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_arrow_back_24"
+        android:id="@+id/backBtn"
+        app:tint="@color/dark" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Room Description"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/dark"
+        android:layout_marginTop="10dp"
+        android:textSize="22sp"
+        android:id="@+id/amenitiesType"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        app:cardBackgroundColor="@color/white">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/resort"
+            android:scaleType="fitXY"
+            android:id="@+id/roomPic"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/dark"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:id="@+id/roomName"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/dark"
+        android:layout_marginTop="10dp"
+        android:textSize="12sp"
+        android:id="@+id/roomDescription"/>
+
+</LinearLayout>

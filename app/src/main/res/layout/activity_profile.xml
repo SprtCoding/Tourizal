@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:padding="20dp"
+    tools:context=".UserMenuFragment.UserOtherOptions.Profile">
+
+    <LinearLayout
+        android:id="@+id/name_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:drawableStart="@drawable/baseline_arrow_back_24"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="back"
+            android:letterSpacing=".1"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_black"
+            android:text="Welcome,"
+            android:letterSpacing=".1"
+            android:textColor="@color/white"
+            android:textSize="32sp" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Name"
+            android:letterSpacing=".1"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+    </LinearLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="230dp"
+        android:layout_toEndOf="@id/name_ll"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/default_profile"
+        android:id="@+id/user_pic"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_pic"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_black"
+                android:text="Other Information"
+                android:letterSpacing=".1"
+                android:textColor="@color/dark"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.8dp"
+                android:background="@color/dark"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_black"
+                android:text="Email"
+                android:letterSpacing=".1"
+                android:textColor="@color/dark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="email@gmail.com"
+                android:letterSpacing=".1"
+                android:textColor="@color/dark"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_black"
+                android:text="Date of Birth"
+                android:letterSpacing=".1"
+                android:textColor="@color/dark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/bdate"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="date"
+                android:letterSpacing=".1"
+                android:textColor="@color/dark"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_black"
+                android:text="Age"
+                android:letterSpacing=".1"
+                android:textColor="@color/dark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/age"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="age"
+                android:letterSpacing=".1"
+                android:textColor="@color/dark"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_black"
+                android:text="Gender"
+                android:letterSpacing=".1"
+                android:textColor="@color/dark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/gender"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Gender"
+                android:letterSpacing=".1"
+                android:textColor="@color/dark"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="15dp"
+                    android:text="Edit Profile"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:cornerRadius="5dp"
+                    android:textSize="18sp"
+                    android:backgroundTint="@color/light_blue"
+                    android:fontFamily="@font/poppins_medium"
+                    app:icon="@drawable/pen_square_18"
+                    android:gravity="center"
+                    app:iconGravity="textStart"
+                    android:id="@+id/edit_btn"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Logout"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:cornerRadius="5dp"
+                    android:textSize="18sp"
+                    android:backgroundTint="@color/red"
+                    android:fontFamily="@font/poppins_medium"
+                    app:icon="@drawable/baseline_exit_to_app_24"
+                    android:gravity="center"
+                    app:iconGravity="textStart"
+                    android:id="@+id/logout_btn"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

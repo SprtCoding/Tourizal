@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/_10sdp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_15sdp">
+
+        <TextView
+            android:id="@+id/closeMapTypeDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="x"
+            android:textSize="@dimen/_20ssp"
+            android:fontFamily="@font/garet_black"
+            android:textColor="@color/black"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_alignParentTop="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select map type"
+            android:textSize="@dimen/_18ssp"
+            android:fontFamily="@font/garet_black"
+            android:textColor="@color/black"
+            android:textAllCaps="true"
+            android:layout_alignTop="@id/closeMapTypeDialog"
+            android:layout_alignBottom="@id/closeMapTypeDialog"
+            android:layout_alignParentStart="true"/>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mapTypeTIL"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:hint="Map Type"
+            android:layout_below="@id/closeMapTypeDialog"
+            app:hintTextColor="#2E2E2E"
+            android:textColorHint="#2E2E2E"
+            app:startIconDrawable="@drawable/baseline_map_24"
+            android:layout_width="match_parent"
+            app:boxStrokeColor="@color/blue"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            app:startIconTint="@color/blue"
+            app:endIconTint="@color/blue"
+            android:layout_height="wrap_content">
+
+            <AutoCompleteTextView
+                android:id="@+id/mapTypeCTV"
+                android:fontFamily="@font/garet_normal"
+                android:inputType="none"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/okBtn"
+            android:layout_below="@id/mapTypeTIL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:fontFamily="@font/garet_black"
+            app:icon="@drawable/baseline_location_on_24"
+            app:iconGravity="textStart"
+            app:iconTint="@color/white"
+            android:text="Ok"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_11ssp"
+            android:padding="@dimen/_10sdp"
+            android:paddingStart="@dimen/_22sdp"
+            android:paddingEnd="@dimen/_22sdp"
+            app:cornerRadius="@dimen/_5sdp"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="@dimen/_15sdp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardBackgroundColor="@color/white"
+        android:id="@+id/reserved_card">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_15sdp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:src="@drawable/default_profile"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:id="@+id/user_pic"/>
+
+            <LinearLayout
+                android:id="@+id/ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/user_pic"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:padding="@dimen/_10sdp"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                    android:textSize="@dimen/_14ssp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textColor="@color/black"
+                    android:id="@+id/user_name"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Booked "
+                    android:textSize="@dimen/_11ssp"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/black"
+                    android:id="@+id/room_no"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="contact"
+                    android:textSize="@dimen/_11ssp"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/black"
+                    android:id="@+id/user_contact"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/buttons_ll"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Details"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"
+                    android:backgroundTint="#0ABDD4"
+                    android:background="@drawable/btn_bg"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:gravity="center"
+                    android:textSize="@dimen/_10ssp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/white"
+                    android:id="@+id/see_details" />
+
+                <TextView
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Approve"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"
+                    android:background="@drawable/btn_bg"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:gravity="center"
+                    android:textSize="@dimen/_10ssp"
+                    android:backgroundTint="#31955B"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/white"
+                    android:id="@+id/accept"/>
+
+                <TextView
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Decline"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"
+                    android:background="@drawable/btn_bg"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:gravity="center"
+                    android:textSize="@dimen/_10ssp"
+                    android:backgroundTint="@color/red"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/white"
+                    android:id="@+id/reject"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

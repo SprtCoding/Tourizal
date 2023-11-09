@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".UserInformation.UserBasicInformation">
+
+    <ImageView
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_width="@dimen/_110sdp"
+        android:layout_height="@dimen/_110sdp"
+        android:src="@drawable/logo_new"
+        android:contentDescription="@string/app_name"/>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/_30sdp"
+        android:paddingTop="90dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/garet_black"
+            android:text="Basic Information"
+            android:textColor="@color/blue"
+            android:textAllCaps="true"
+            android:textSize="@dimen/_18ssp"
+            android:letterSpacing=".1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:fontFamily="@font/garet_normal"
+            android:letterSpacing=".1"
+            android:text="Add your basic information."
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_11ssp" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:padding="10dp">
+
+                <RelativeLayout
+                    android:id="@+id/profileRL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_15sdp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profilePic"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/default_profile"/>
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:src="@drawable/baseline_camera_alt_24"
+                        android:layout_below="@id/profilePic"
+                        android:layout_alignEnd="@id/profilePic"
+                        android:layout_marginTop="-35dp"
+                        app:tint="#4397E1"
+                        android:id="@+id/openGallery"/>
+
+                </RelativeLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:hint="Age"
+                    app:hintTextColor="#2E2E2E"
+                    android:textColorHint="#2E2E2E"
+                    app:startIconDrawable="@drawable/age"
+                    android:layout_width="match_parent"
+                    app:endIconMode="clear_text"
+                    app:helperText="Required*"
+                    app:helperTextTextColor="#BC5D5D"
+                    app:boxStrokeColor="@color/blue"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:startIconTint="@color/blue"
+                    app:endIconTint="@color/blue"
+                    app:boxBackgroundMode="outline"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ageET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/garet_normal"
+                        android:inputType="number"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11ssp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:hint="Gender"
+                    app:hintTextColor="#2E2E2E"
+                    android:textColorHint="#2E2E2E"
+                    app:startIconDrawable="@drawable/gender"
+                    android:layout_width="match_parent"
+                    app:helperText="Required*"
+                    app:helperTextTextColor="#BC5D5D"
+                    app:boxStrokeColor="@color/blue"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    app:startIconTint="@color/blue"
+                    app:endIconTint="@color/blue"
+                    android:layout_height="wrap_content">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/genderCTV"
+                        android:fontFamily="@font/garet_normal"
+                        android:inputType="none"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/dateBtn"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    app:strokeColor="@color/blue"
+                    app:icon="@drawable/baseline_calendar_month_24"
+                    app:iconGravity="end"
+                    app:iconTint="@color/blue"
+                    android:fontFamily="@font/garet_normal"
+                    android:text="Date of Birth"
+                    android:textAllCaps="false"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:cornerRadius="5dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:id="@+id/saveBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:fontFamily="@font/garet_black"
+                    app:icon="@drawable/baseline_save_24"
+                    app:iconGravity="textStart"
+                    app:iconTint="@color/white"
+                    android:text="Save"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11ssp"
+                    android:padding="@dimen/_10sdp"
+                    android:paddingStart="@dimen/_22sdp"
+                    android:paddingEnd="@dimen/_22sdp"
+                    app:cornerRadius="@dimen/_5sdp"/>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

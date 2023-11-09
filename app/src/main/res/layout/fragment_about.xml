@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg"
+    tools:context=".AdminMenu.AboutFragment">
+
+    <ImageView
+        android:id="@+id/header_logo"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+        android:src="@drawable/logo_new"
+        android:contentDescription="@string/app_name"/>
+
+    <TextView
+        android:layout_below="@id/header_logo"
+        android:layout_marginTop="-55dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:textAlignment="center"
+        android:text="Explore the beauty of Rizal"
+        android:textSize="@dimen/_10ssp"
+        android:letterSpacing=".2"
+        android:textColor="@color/white" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header_logo"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
+        app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="@color/white">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_20sdp"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textAlignment="center"
+                    android:text="About TouRizal"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="@dimen/_15ssp"
+                    android:letterSpacing=".2"
+                    android:textColor="@color/light_blue" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="\t\t\tTouRizal Android Application is design to give the user want to explore around Rizal, Occidental Mindoro."
+                    android:layout_marginBottom="20dp"
+                    android:textSize="@dimen/_12ssp"
+                    android:justificationMode="inter_word"
+                    android:letterSpacing=".1"
+                    android:textColor="@color/light_blue" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:src="@drawable/resort"
+                    android:layout_marginBottom="10dp"
+                    android:contentDescription="@string/app_name"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textAlignment="center"
+                    android:text="Contact Us"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="@dimen/_15ssp"
+                    android:letterSpacing=".2"
+                    android:textColor="@color/light_blue" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/facebookFab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/facebook"
+                        app:tint="@color/white"
+                        android:contentDescription="@string/app_name"
+                        app:backgroundTint="@color/light_blue"
+                        />
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/gmailFab"
+                        android:layout_marginStart="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/gmail"
+                        app:tint="@color/white"
+                        android:contentDescription="@string/app_name"
+                        app:backgroundTint="@color/light_blue"
+                        />
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/instagramFab"
+                        android:layout_marginStart="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/instagram"
+                        app:tint="@color/white"
+                        android:contentDescription="@string/app_name"
+                        app:backgroundTint="@color/light_blue"
+                        />
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/phoneCallFab"
+                        android:layout_marginStart="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_phone_24"
+                        app:tint="@color/white"
+                        android:contentDescription="@string/app_name"
+                        app:backgroundTint="@color/light_blue"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

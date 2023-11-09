@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_15sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:cardBackgroundColor="@color/light_blue">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/room_bed"
+                android:layout_alignTop="@id/ll"
+                android:layout_alignBottom="@id/ll"
+                android:scaleType="fitXY"
+                android:id="@+id/pic"/>
+
+            <LinearLayout
+                android:id="@+id/ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@id/pic"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/room_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Room No."
+                    android:textSize="@dimen/_12ssp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginStart="@dimen/_10sdp"/>
+
+                <TextView
+                    android:id="@+id/room_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="P 0.00"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp"
+                    android:fontFamily="@font/poppins"
+                    android:layout_marginStart="@dimen/_10sdp"/>
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status: Pending..."
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_10sdp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:orientation="horizontal"
+                    android:gravity="end">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Details"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10ssp"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:background="@drawable/btn_bg"
+                        android:backgroundTint="#0ABDD4"
+                        android:gravity="center"
+                        android:id="@+id/details_btn"/>
+
+                    <TextView
+                        android:layout_marginStart="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cancel"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10ssp"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:background="@drawable/btn_bg"
+                        android:backgroundTint="@color/red"
+                        android:gravity="center"
+                        android:id="@+id/cancel_btn"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

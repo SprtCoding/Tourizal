@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="40dp"
+    android:paddingBottom="40dp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:src="@drawable/baseline_signal_wifi_off_24"
+        android:contentDescription="@string/app_name"
+        app:tint="#D34354" />
+
+    <TextView
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/garet_black"
+        android:text="OOPS!"
+        android:textSize="@dimen/_25ssp"
+        android:textAllCaps="true"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:paddingStart="@dimen/_20sdp"
+        android:paddingEnd="@dimen/_20sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/garet_black"
+        android:textAlignment="center"
+        android:text="No Internet Connection"
+        android:textSize="@dimen/_15ssp"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:paddingStart="@dimen/_20sdp"
+        android:paddingEnd="@dimen/_20sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/garet_normal"
+        android:textAlignment="center"
+        android:text="Please check your connection"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/black" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/retryBtn"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/garet_black"
+        android:text="Retry"
+        app:iconGravity="textStart"
+        app:iconTint="@color/white"
+        android:textColor="@color/white"
+        android:backgroundTint="#D34354"
+        app:icon="@drawable/baseline_settings_backup_restore_24"
+        android:textSize="@dimen/_10ssp"
+        app:cornerRadius="@dimen/_5sdp"
+        app:strokeColor="@color/white" />
+
+</LinearLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "770928552753",
+    "project_id": "tourizal-f1220",
+    "storage_bucket": "tourizal-f1220.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770928552753:android:5793b942e525f1b3d4de10",
+        "android_client_info": {
+          "package_name": "com.sprtcoding.tourizal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "770928552753-iejtfevd6d7lnaa7cvrs65cq07svpe6l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzeq76gNROjEZeMJ003cd7A6rCgaD7QTc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "770928552753-iejtfevd6d7lnaa7cvrs65cq07svpe6l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

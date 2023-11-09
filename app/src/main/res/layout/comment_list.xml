@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:layout_margin="10dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/default_profile"
+        android:id="@+id/user_pic"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/user_pic"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Name"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="14sp"
+            android:id="@+id/userName"/>
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingBar"
+            android:numStars="5"
+            android:layout_marginBottom="5dp"
+            android:progressBackgroundTint="@color/blue"
+            android:progressTint="@color/red"
+            style="@style/Widget.AppCompat.RatingBar.Small"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comments"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"
+            android:id="@+id/comments"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="date"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="10sp"
+                android:id="@+id/date"/>
+
+            <TextView
+                android:layout_marginStart="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="time"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="10sp"
+                android:id="@+id/time"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

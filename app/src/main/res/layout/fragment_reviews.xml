@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".AdminMenu.ReviewsFragment">
+
+    <ImageView
+        android:id="@+id/header_logo"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:src="@drawable/logo_new"
+        android:contentDescription="@string/app_name"/>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_below="@id/header_logo"
+        android:layout_marginTop="-25dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:textAlignment="center"
+        android:text="Resort Reviews"
+        android:textSize="@dimen/_22ssp"
+        android:textColor="@color/white" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rate_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_70sdp"
+        tools:listitem="@layout/reviews_list"
+        android:layout_below="@id/text"
+        tools:itemCount="1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:padding="@dimen/_10sdp"/>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_below="@id/text"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/no_reviews_ll"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="@dimen/_10sdp">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_150sdp"
+            app:lottie_rawRes="@raw/no_data_found"
+            android:scaleType="centerInside"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/garet_black"
+            android:textAlignment="center"
+            android:text="No Reviews!"
+            android:textSize="@dimen/_16ssp"
+            android:letterSpacing=".2"
+            android:textColor="@color/light_blue" />
+
+    </LinearLayout>
+
+</RelativeLayout>

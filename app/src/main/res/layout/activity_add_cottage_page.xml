@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".AdminPost.ResortPost.AddCottagePage">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/blue"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/backBtn"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:scaleType="center"
+                android:src="@drawable/baseline_arrow_back_24"
+                android:contentDescription="@string/app_name"/>
+
+            <ImageView
+                android:id="@+id/header_logo"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:src="@drawable/logo_new"
+                android:contentDescription="@string/app_name"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:layout_below="@id/appBar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:textAlignment="center"
+                android:text="Add Cottage/s"
+                android:textSize="@dimen/_22ssp"
+                android:textColor="@color/white" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_190sdp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/light_blue">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_150sdp"
+                        android:src="@drawable/resort"
+                        android:scaleType="fitXY"
+                        android:id="@+id/CottagePhoto"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="end|center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/openFile"
+                            android:padding="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/light_blue"
+                            android:text="Choose file"
+                            android:gravity="center"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="@dimen/_12ssp"
+                            android:textColor="@color/white"
+                            android:letterSpacing=".1"
+                            android:drawablePadding="10dp"
+                            app:drawableStartCompat="@drawable/baseline_folder_24"
+                            app:drawableTint="@color/white" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="@dimen/_15sdp"
+                android:hint="Cottage Number"
+                app:hintTextColor="#2E2E2E"
+                android:textColorHint="#2E2E2E"
+                app:startIconDrawable="@drawable/resort_icon"
+                android:layout_width="match_parent"
+                app:endIconMode="clear_text"
+                app:helperText="Ex. 1"
+                app:helperTextTextColor="#BC5D5D"
+                app:boxStrokeColor="@color/blue"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:startIconTint="@color/blue"
+                app:endIconTint="@color/blue"
+                app:boxBackgroundMode="outline"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/cottageNumberET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:inputType="number"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11ssp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="@dimen/_15sdp"
+                android:hint="Description"
+                app:hintTextColor="#2E2E2E"
+                android:textColorHint="#2E2E2E"
+                app:startIconDrawable="@drawable/edit_square"
+                android:layout_width="match_parent"
+                app:endIconMode="clear_text"
+                app:helperText="Required*"
+                app:helperTextTextColor="@color/red"
+                app:boxStrokeColor="@color/blue"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:startIconTint="@color/blue"
+                app:endIconTint="@color/blue"
+                app:boxBackgroundMode="outline"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/descriptionET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11ssp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="@dimen/_15sdp"
+                android:hint="Cottage Fee"
+                app:hintTextColor="#2E2E2E"
+                android:textColorHint="#2E2E2E"
+                app:startIconDrawable="@drawable/peso_small"
+                android:layout_width="match_parent"
+                app:endIconMode="clear_text"
+                app:helperText="Ex. 1000.00"
+                app:helperTextTextColor="@color/red"
+                app:boxStrokeColor="@color/blue"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:startIconTint="@color/blue"
+                app:endIconTint="@color/blue"
+                app:boxBackgroundMode="outline"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/cottageFeeET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11ssp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/postBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Post"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11ssp"
+                android:padding="@dimen/_10sdp"
+                android:paddingStart="@dimen/_22sdp"
+                android:paddingEnd="@dimen/_22sdp"
+                app:cornerRadius="@dimen/_5sdp"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

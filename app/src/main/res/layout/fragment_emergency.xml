@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UserMenuFragment.EmergencyFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/blue"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:src="@drawable/logo_new"
+                android:contentDescription="@string/app_name"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_below="@id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:paddingBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/emergency_pic"
+                    android:layout_width="200dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/emergency"
+                    android:contentDescription="@string/app_name"/>
+
+                <TextView
+                    android:id="@+id/header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_toEndOf="@id/emergency_pic"
+                    android:fontFamily="@font/garet_black"
+                    android:text="Emergency Hotlines"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_below="@id/header"
+                    android:layout_alignStart="@id/header"
+                    android:layout_alignEnd="@id/header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="In Case of Emergency Call Emergency Hotlines"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/garet_normal"
+                    android:textSize="14sp"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/mdrrmo"
+                android:background="@drawable/hotline_bg"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="70dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="130dp"
+                    android:src="@drawable/logo_colored"/>
+
+                <LinearLayout
+                    android:padding="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MDRRMO"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/garet_black"
+                        android:textColor="@color/quantum_googgreen"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Municipal Disaster Risk Reduction and Management Office"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/garet_normal"
+                        android:textColor="@color/quantum_black_100"/>
+
+                    <TextView
+                        android:id="@+id/mdrrmo_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0949-869-9602"
+                        android:textSize="25sp"
+                        android:fontFamily="@font/garet_black"
+                        android:textColor="@color/red"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rizalde V. Gragasin"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/garet_normal"
+                        android:textColor="@color/quantum_googgreen"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/hotline_bg"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="130dp"
+                    android:src="@drawable/logo_colored"/>
+
+                <LinearLayout
+                    android:padding="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rizal MPS"
+                        android:textAllCaps="true"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/garet_black"
+                        android:textColor="@color/quantum_googgreen"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rizal Municipal Police Station"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/garet_normal"
+                        android:textColor="@color/quantum_black_100"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0919-690-2140"
+                        android:textSize="25sp"
+                        android:fontFamily="@font/garet_black"
+                        android:textColor="@color/red"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/hotline_bg"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="130dp"
+                    android:src="@drawable/logo_colored"/>
+
+                <LinearLayout
+                    android:padding="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BFP"
+                        android:textAllCaps="true"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/garet_black"
+                        android:textColor="@color/quantum_googgreen"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bureau of Fire Protection"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/garet_normal"
+                        android:textColor="@color/quantum_black_100"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0949-923-9290"
+                        android:textSize="25sp"
+                        android:fontFamily="@font/garet_black"
+                        android:textColor="@color/red"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SF03 Rogelio O. Cabalse, Jr."
+                        android:textSize="12sp"
+                        android:fontFamily="@font/garet_normal"
+                        android:textColor="@color/quantum_googgreen"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/hotline_bg"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="130dp"
+                    android:src="@drawable/logo_colored"/>
+
+                <LinearLayout
+                    android:padding="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DILG"
+                        android:textAllCaps="true"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/garet_black"
+                        android:textColor="@color/quantum_googgreen"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Department of Local and Interior Government"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/garet_normal"
+                        android:textColor="@color/quantum_black_100"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0919-739-5425"
+                        android:textSize="25sp"
+                        android:fontFamily="@font/garet_black"
+                        android:textColor="@color/red"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sonia J. Castronuevo"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/garet_normal"
+                        android:textColor="@color/quantum_googgreen"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/hotline_bg"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="130dp"
+                    android:src="@drawable/logo_colored"/>
+
+                <LinearLayout
+                    android:padding="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MHO"
+                        android:textAllCaps="true"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/garet_black"
+                        android:textColor="@color/quantum_googgreen"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Municipal Health Office"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/garet_normal"
+                        android:textColor="@color/quantum_black_100"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0929-150-5640"
+                        android:textSize="25sp"
+                        android:fontFamily="@font/garet_black"
+                        android:textColor="@color/red"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dr. Mary Josephine L. Mangahas"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/garet_normal"
+                        android:textColor="@color/quantum_googgreen"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/hotline_bg"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="130dp"
+                    android:src="@drawable/logo_colored"/>
+
+                <LinearLayout
+                    android:padding="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Redcross"
+                        android:textAllCaps="true"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/garet_black"
+                        android:textColor="@color/quantum_googgreen"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Philippine Red Cross"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/garet_normal"
+                        android:textColor="@color/quantum_black_100"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0999-881-5737"
+                        android:textSize="25sp"
+                        android:fontFamily="@font/garet_black"
+                        android:textColor="@color/red"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Joselito B. Pantoja, Jr., EMT"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/garet_normal"
+                        android:textColor="@color/quantum_googgreen"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/hotline_bg"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="130dp"
+                    android:src="@drawable/logo_colored"/>
+
+                <LinearLayout
+                    android:padding="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MSWDO"
+                        android:textAllCaps="true"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/garet_black"
+                        android:textColor="@color/quantum_googgreen"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Municipal Social Welfare and Development Office"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/garet_normal"
+                        android:textColor="@color/quantum_black_100"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0949-871-4736"
+                        android:textSize="25sp"
+                        android:fontFamily="@font/garet_black"
+                        android:textColor="@color/red"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Eloisa S. Enelda"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/garet_normal"
+                        android:textColor="@color/quantum_googgreen"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/hotline_bg"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="130dp"
+                    android:src="@drawable/logo_colored"/>
+
+                <LinearLayout
+                    android:padding="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DEPED"
+                        android:textAllCaps="true"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/garet_black"
+                        android:textColor="@color/quantum_googgreen"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Department of Education"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/garet_normal"
+                        android:textColor="@color/quantum_black_100"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0920-325-4441"
+                        android:textSize="25sp"
+                        android:fontFamily="@font/garet_black"
+                        android:textColor="@color/red"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Marife A. Paredes"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/garet_normal"
+                        android:textColor="@color/quantum_googgreen"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/hotline_bg"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="130dp"
+                    android:src="@drawable/logo_colored"/>
+
+                <LinearLayout
+                    android:padding="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PDRRMO"
+                        android:textAllCaps="true"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/garet_black"
+                        android:textColor="@color/quantum_googgreen"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Provincial Desaster Risk Reduction and Management Office"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/garet_normal"
+                        android:textColor="@color/quantum_black_100"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0919-093-7678"
+                        android:textSize="25sp"
+                        android:fontFamily="@font/garet_black"
+                        android:textColor="@color/red"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0916-163-4878"
+                        android:textSize="25sp"
+                        android:fontFamily="@font/garet_black"
+                        android:textColor="@color/red"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mario D. Mulingbayan"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/garet_normal"
+                        android:textColor="@color/quantum_googgreen"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

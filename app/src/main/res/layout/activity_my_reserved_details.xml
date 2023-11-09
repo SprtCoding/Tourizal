@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".UserMenuFragment.UserOtherOptions.MyReservedDetails">
+
+    <ImageView
+        android:id="@+id/back_btn"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:tint="@color/black"
+        android:scaleType="centerInside"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello, "
+        android:layout_below="@id/back_btn"
+        android:textColor="@color/black"
+        android:fontFamily="@font/garet_black"
+        android:textSize="@dimen/_22ssp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:id="@+id/hello_txt"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Full Name"
+        android:layout_toEndOf="@id/hello_txt"
+        android:layout_alignTop="@id/hello_txt"
+        android:layout_alignBottom="@id/hello_txt"
+        android:textColor="@color/black"
+        android:fontFamily="@font/garet_black"
+        android:textSize="@dimen/_22ssp"
+        android:id="@+id/my_name_txt"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hello_txt"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You Booked,"
+            android:textColor="@color/black"
+            android:fontFamily="@font/garet_normal"
+            android:textSize="@dimen/_13ssp"/>
+
+        <TextView
+            android:id="@+id/room_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Room/Cottage Name"
+            android:textColor="@color/black"
+            android:fontFamily="@font/garet_black"
+            android:textSize="@dimen/_13ssp"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/resort"
+            android:scaleType="fitXY"
+            android:id="@+id/img"
+            android:contentDescription="picture"/>
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reservation Date :"
+                android:textColor="@color/black"
+                android:fontFamily="@font/garet_black"
+                android:textSize="@dimen/_13ssp"/>
+
+            <TextView
+                android:id="@+id/date_reserved"
+                android:layout_marginStart="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textColor="@color/black"
+                android:fontFamily="@font/garet_normal"
+                android:textSize="@dimen/_13ssp"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                app:drawableStartCompat="@drawable/baseline_calendar_month_24" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact Number :"
+                android:textColor="@color/black"
+                android:fontFamily="@font/garet_black"
+                android:textSize="@dimen/_13ssp"/>
+
+            <TextView
+                android:id="@+id/contact"
+                android:layout_marginStart="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number"
+                android:textColor="@color/black"
+                android:fontFamily="@font/garet_normal"
+                android:textSize="@dimen/_13ssp"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                app:drawableTint="@color/black"
+                app:drawableStartCompat="@drawable/baseline_phone_24" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/black"
+                android:fontFamily="@font/garet_normal"
+                android:textSize="@dimen/_13ssp"
+                android:drawablePadding="5dp"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Payment:"
+                android:textColor="@color/black"
+                android:fontFamily="@font/garet_normal"
+                android:textSize="@dimen/_13ssp"
+                android:drawablePadding="5dp"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cancel_btn"
+                android:layout_marginStart="10dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/red"
+                android:fontFamily="@font/garet_black"
+                android:text="Cancel"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

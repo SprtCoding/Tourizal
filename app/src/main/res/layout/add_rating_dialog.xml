@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:padding="@dimen/_15sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/addRatingTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Rating"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20ssp"
+            android:fontFamily="@font/poppins_bold"/>
+
+        <TextView
+            android:id="@+id/closeRatingDialogBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="x"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@id/addRatingTxt"
+            android:layout_alignBottom="@id/addRatingTxt"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20ssp"
+            android:fontFamily="@font/poppins_bold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_below="@id/addRatingTxt"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="Comments"
+                app:hintTextColor="#2E2E2E"
+                android:textColorHint="#2E2E2E"
+                android:layout_width="match_parent"
+                app:boxStrokeColor="@color/light_blue"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/reviewET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:inputType="textMultiLine"
+                    android:lines="6"
+                    android:gravity="top"
+                    android:overScrollMode="always"
+                    android:scrollbars="vertical"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollHorizontally="false"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11ssp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:id="@+id/addRatingValue"
+                android:progressTint="@color/light_blue"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/submitRatingBtn"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Submit"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11ssp"
+                android:padding="@dimen/_10sdp"
+                android:paddingStart="@dimen/_22sdp"
+                android:paddingEnd="@dimen/_22sdp"
+                app:cornerRadius="@dimen/_5sdp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

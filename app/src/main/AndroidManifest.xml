@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Tourizal"
+        tools:targetApi="31">
+        <activity
+            android:name=".AdminPost.ResortPost.ManageKayakin"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPost.ResortPost.ManagePool"
+            android:exported="false" />
+        <activity
+            android:name=".UsersViewPost.AmenitiesDetails"
+            android:exported="false" />
+        <activity
+            android:name=".UserMenuFragment.UserOtherOptions.Profile"
+            android:exported="false" />
+        <activity
+            android:name=".UserMenuFragment.UserOtherOptions.MyRatings"
+            android:exported="false" />
+        <activity
+            android:name=".UserMenuFragment.UserOtherOptions.MyReservedDetails"
+            android:exported="false" />
+        <activity
+            android:name=".AdminMenu.Reservation.Details"
+            android:exported="false" />
+        <activity
+            android:name=".UserMenuFragment.UserOtherOptions.MyReservation"
+            android:exported="false" />
+        <activity
+            android:name=".StreetView.KuulaStreetView"
+            android:exported="false" />
+        <activity
+            android:name=".StreetView.ResortLocationStreetView"
+            android:exported="false" />
+        <activity
+            android:name=".DirectionMapsAPI.ResortDirection"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPost.ResortPost.AddCottagePage"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPost.ResortPost.ManageCottages"
+            android:exported="false" />
+        <activity
+            android:name=".UsersViewPost.UserResortInfo"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPost.ResortPost.AddRoomsPage"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPost.ResortPost.ManageRooms"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPost.ResortPost.AddResortPage"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPost.ResortPost.ManageResort"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPost.ManageResortCategory"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPost.AddFeaturedPost"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPost.FeaturedPost"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPassword.ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".AdminDashboardPage"
+            android:exported="false" />
+        <activity
+            android:name=".UserDashBoard"
+            android:exported="false" />
+        <activity
+            android:name=".UserInformation.UserBasicInformation"
+            android:exported="false" />
+        <activity
+            android:name=".Auth.Signup"
+            android:exported="false" />
+        <activity
+            android:name=".Auth.Login"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".FCM.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/apiKey" />
+    </application>
+
+</manifest>

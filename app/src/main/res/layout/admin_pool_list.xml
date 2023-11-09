@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/_10sdp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="@dimen/_110sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:src="@drawable/resort"
+            android:scaleType="fitXY"
+            android:id="@+id/roomPhoto"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingEnd="10dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/poolNo"
+                android:text="Pool No"
+                android:fontFamily="@font/poppins_bold"
+                android:letterSpacing=".1"
+                android:textAllCaps="true"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/light_blue"/>
+
+            <TextView
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/poolType"
+                android:text="Pool Type"
+                android:fontFamily="@font/poppins"
+                android:letterSpacing=".1"
+                android:textSize="@dimen/_10ssp"
+                android:textColor="@color/light_blue"/>
+
+            <LinearLayout
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingEnd="10dp"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editBtn"
+                    android:text="Edit"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/light_blue"
+                    android:letterSpacing=".1"
+                    android:gravity="center"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/_11ssp"
+                    app:drawableStartCompat="@drawable/pen_square_18"
+                    app:drawableTint="@color/light_blue" />
+
+                <TextView
+                    android:layout_marginStart="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/deleteBtn"
+                    android:text="Delete"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/red"
+                    android:letterSpacing=".1"
+                    android:gravity="center"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/_11ssp"
+                    app:drawableStartCompat="@drawable/trash_18"
+                    app:drawableTint="@color/red" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_home"
+        android:icon="@drawable/home_18"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/bottom_locator"
+        android:icon="@drawable/navigation_18"
+        android:title="Locator"/>
+
+    <item
+        android:id="@+id/bottom_emergency"
+        android:icon="@drawable/phone_call_18"
+        android:title="Emergency Hotline"/>
+
+    <item
+        android:id="@+id/bottom_about"
+        android:icon="@drawable/info_18"
+        android:title="About"/>
+</menu>

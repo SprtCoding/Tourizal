@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:id="@+id/resort_item_card"
+    app:cardBackgroundColor="@color/white"
+    android:layout_margin="@dimen/_5sdp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/resortUserPic"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_120sdp"
+            android:src="@drawable/resort"
+            android:scaleType="fitXY"
+            android:tintMode="screen"
+            android:contentDescription="@string/app_name"
+            app:tint="@color/black" />
+
+        <LinearLayout
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/resortUserPic"
+            android:layout_alignBottom="@id/resortUserPic"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@id/resortUserPic"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/resortName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/garet_black"
+                android:letterSpacing=".1"
+                android:text="Resort Name"
+                android:textAllCaps="true"
+                android:textColor="@color/light_blue"
+                android:textSize="@dimen/_10ssp" />
+
+            <TextView
+                android:id="@+id/resortLocationName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/garet_normal"
+                android:letterSpacing=".1"
+                android:text="Resort Location"
+                android:textColor="@color/light_blue"
+                android:textSize="@dimen/_8ssp" />
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/resortRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/garet_black"
+                    android:letterSpacing=".1"
+                    android:text="0.0"
+                    android:textColor="@color/light_blue"
+                    android:textSize="@dimen/_10ssp"
+                    android:drawablePadding="5dp"
+                    app:drawableStartCompat="@drawable/star_18"
+                    app:drawableTint="@color/light_blue" />
+
+                <TextView
+                    android:id="@+id/resortComments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/garet_black"
+                    android:letterSpacing=".1"
+                    android:text="0"
+                    android:textColor="@color/light_blue"
+                    android:textSize="@dimen/_10ssp"
+                    android:drawablePadding="5dp"
+                    app:drawableStartCompat="@drawable/comment_dots_18"
+                    app:drawableTint="@color/light_blue" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

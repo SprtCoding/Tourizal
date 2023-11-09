@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/amenitiesRoomCard"
+    android:layout_margin="5dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="@dimen/_110sdp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/ll"
+            android:layout_alignBottom="@id/ll"
+            android:src="@drawable/resort"
+            android:scaleType="fitXY"
+            android:id="@+id/cottagePhoto"/>
+
+        <LinearLayout
+            android:layout_toEndOf="@id/cottagePhoto"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/ll"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cottageName"
+                android:text="Cottage Name"
+                android:fontFamily="@font/poppins_bold"
+                android:letterSpacing=".1"
+                android:textAllCaps="true"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/light_blue"/>
+
+            <TextView
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cottageDescription"
+                android:text="Description"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins"
+                android:letterSpacing=".1"
+                android:textSize="@dimen/_10ssp"
+                android:textColor="@color/light_blue"/>
+
+            <TextView
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cottageFee"
+                android:drawablePadding="5dp"
+                android:text="0.00"
+                android:fontFamily="@font/poppins_medium"
+                android:letterSpacing=".1"
+                android:textSize="@dimen/_10ssp"
+                android:textColor="@color/light_blue" />
+
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end|center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/reserveBtn"
+                    android:text="Reserve"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/red"
+                    android:letterSpacing=".1"
+                    android:gravity="center"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/_10ssp"
+                    app:drawableStartCompat="@drawable/reserve"
+                    app:drawableTint="@color/red" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

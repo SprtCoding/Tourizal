@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_margin="@dimen/_5sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    app:cardBackgroundColor="@color/light_blue">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/resortPic"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp"
+            android:src="@drawable/resort"
+            android:scaleType="fitXY"
+            android:tintMode="screen"
+            android:contentDescription="@string/app_name"
+            app:tint="@color/black" />
+
+        <!-- Dark Overlay -->
+        <View
+            android:layout_alignBottom="@id/resortPic"
+            android:layout_alignTop="@id/resortPic"
+            android:layout_alignStart="@id/resortPic"
+            android:layout_alignEnd="@id/resortPic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80000000"
+            android:id="@+id/darkOverlay"/>
+
+        <TextView
+            android:id="@+id/featuredTitle"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingEnd="@dimen/_15sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/garet_black"
+            android:text="Featured Title"
+            android:textColor="@color/white"
+            android:textAllCaps="true"
+            android:textSize="@dimen/_16ssp"
+            android:letterSpacing=".1"/>
+
+        <TextView
+            android:id="@+id/resortName"
+            android:layout_below="@id/featuredTitle"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:fontFamily="@font/garet_normal"
+            android:letterSpacing=".1"
+            android:text="Resort Name"
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingEnd="@dimen/_15sdp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_11ssp" />
+
+        <TextView
+            android:id="@+id/resortLocation"
+            android:layout_below="@id/resortName"
+            android:layout_alignParentStart="true"
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingEnd="@dimen/_15sdp"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:fontFamily="@font/garet_black"
+            android:letterSpacing=".1"
+            android:text="Resort Location"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_11ssp" />
+
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="10dp"
+            android:layout_below="@id/resortPic"
+            android:id="@+id/timePosted"
+            android:layout_alignParentStart="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:fontFamily="@font/garet_normal"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10ssp"/>
+
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/resortPic"
+            android:id="@+id/dot"
+            android:layout_toEndOf="@id/timePosted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="."
+            android:layout_marginStart="2dp"
+            android:fontFamily="@font/garet_normal"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10ssp"/>
+
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/resortPic"
+            android:id="@+id/datePosted"
+            android:layout_toEndOf="@id/dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="July 20, 2023"
+            android:layout_marginStart="2dp"
+            android:fontFamily="@font/garet_normal"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10ssp"/>
+
+        <TextView
+            android:id="@+id/gotoLocationBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/resortPic"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:drawablePadding="7dp"
+            android:fontFamily="@font/garet_black"
+            android:letterSpacing=".1"
+            android:text="Go"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15ssp"
+            app:drawableEndCompat="@drawable/diamond_turn_right_18"
+            app:drawableTint="@color/white" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

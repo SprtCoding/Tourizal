@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="x"
+            android:textSize="18sp"
+            android:textColor="@color/dark"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:id="@+id/close_btn"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/close_btn"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/resort"
+                android:id="@+id/resort_pic"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Resort Name"
+                android:textSize="16sp"
+                android:textColor="@color/dark"
+                android:fontFamily="@font/poppins_bold"
+                android:id="@+id/resort_name"/>
+
+            <RatingBar
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratingBar"
+                android:numStars="5"
+                android:progressBackgroundTint="@color/blue"
+                android:progressTint="@color/red"
+                style="@style/Widget.AppCompat.RatingBar.Small"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                tools:listitem="@layout/comment_list"
+                android:id="@+id/comments_rv"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

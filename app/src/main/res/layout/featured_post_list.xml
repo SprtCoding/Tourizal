@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_margin="@dimen/_10sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    app:cardCornerRadius="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_160sdp"
+            android:src="@drawable/resort"
+            android:scaleType="fitXY"
+            android:id="@+id/featured_photo"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/_15sdp"
+            android:layout_below="@id/featured_photo"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/featured_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Featured Title"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/light_blue"
+                android:textSize="@dimen/_16ssp"/>
+
+            <TextView
+                android:id="@+id/featured_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Resort Name"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/light_blue"
+                android:textSize="@dimen/_14ssp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp">
+
+                <TextView
+                    android:id="@+id/timePosted"
+                    android:layout_alignParentStart="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/light_blue"
+                    android:textSize="@dimen/_10ssp"/>
+
+                <TextView
+                    android:id="@+id/dot"
+                    android:layout_toEndOf="@id/timePosted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="."
+                    android:layout_marginStart="2dp"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/light_blue"
+                    android:textSize="@dimen/_10ssp"/>
+
+                <TextView
+                    android:id="@+id/datePosted"
+                    android:layout_toEndOf="@id/dot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="July 20, 2023"
+                    android:layout_marginStart="2dp"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/light_blue"
+                    android:textSize="@dimen/_10ssp"/>
+
+                <TextView
+                    android:id="@+id/deletePost"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delete"
+                    android:gravity="center"
+                    android:drawablePadding="5dp"
+                    android:layout_marginStart="2dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="#E63B3B"
+                    android:textSize="@dimen/_10ssp"
+                    app:drawableTint="#E63B3B"
+                    app:drawableStartCompat="@drawable/trash_18" />
+
+                <TextView
+                    android:id="@+id/editPost"
+                    android:layout_toStartOf="@id/deletePost"
+                    android:layout_marginEnd="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit"
+                    android:gravity="center"
+                    android:drawablePadding="5dp"
+                    android:layout_marginStart="2dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/_10ssp"
+                    app:drawableTint="@color/blue"
+                    app:drawableStartCompat="@drawable/pen_square_18" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
