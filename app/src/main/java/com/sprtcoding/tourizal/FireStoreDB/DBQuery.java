@@ -14,6 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.checkerframework.checker.guieffect.qual.UI;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -75,27 +76,31 @@ public class DBQuery {
     public static void setRooms(String UID,
                                 String ResortID,
                                 String RoomID,
-                                String RoomPicID,
-                                String RoomPicName,
                                 int RoomNumber,
                                 String Description,
                                 String DayAvailability,
                                 float DayPrice,
                                 String NightAvailability,
+                                float excessDay,
+                                float excessNight,
+                                int maxDay,
+                                int maxNight,
                                 float NightPrice,
-                                String RoomsPhotoURL,
+                                ArrayList<String> RoomsPhotoURL,
                                 MyCompleteListener myCompleteListener) {
         Map<String, Object> roomData = new HashMap<>();
         roomData.put("OWNER_UID", UID);
         roomData.put("RESORT_ID", ResortID);
         roomData.put("ROOM_ID", RoomID);
-        roomData.put("ROOM_PIC_ID", RoomPicID);
-        roomData.put("ROOM_PIC_NAME", RoomPicName);
         roomData.put("ROOM_NO", RoomNumber);
         roomData.put("DESCRIPTION", Description);
         roomData.put("DAY_AVAILABILITY", DayAvailability);
         roomData.put("DAY_PRICE", DayPrice);
         roomData.put("NIGHT_AVAILABILITY", NightAvailability);
+        roomData.put("DAY_EXCESS", excessDay);
+        roomData.put("NIGHT_EXCESS", excessNight);
+        roomData.put("MAX_DAY", maxDay);
+        roomData.put("MAX_NIGHT", maxNight);
         roomData.put("NIGHT_PRICE", NightPrice);
         roomData.put("ROOM_PHOTO_URL", RoomsPhotoURL);
 
@@ -233,6 +238,9 @@ public class DBQuery {
     public static void setReservationRoomUser(String UID,
                                           String MY_ID,
                                           String AmenitiesType,
+                                          int dayStayed,
+                                          String hoursStayed,
+                                          int guestNo,
                                           boolean isRemoved,
                                           String ResortID,
                                           String AmenitiesID,
@@ -255,6 +263,9 @@ public class DBQuery {
         reserveRoomData.put("OWNER_UID", UID);
         reserveRoomData.put("MY_UID", MY_ID);
         reserveRoomData.put("AMENITIES_TYPE", AmenitiesType);
+        reserveRoomData.put("DAYS_STAYED", dayStayed);
+        reserveRoomData.put("HOURS_STAYED", hoursStayed);
+        reserveRoomData.put("GUEST_NO", guestNo);
         reserveRoomData.put("REMOVED", isRemoved);
         reserveRoomData.put("RESORT_ID", ResortID);
         reserveRoomData.put("AMENITIES_ID", AmenitiesID);

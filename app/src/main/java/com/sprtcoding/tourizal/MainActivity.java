@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.sprtcoding.tourizal.Auth.Login;
+import com.sprtcoding.tourizal.LGU.LGUDashboard;
 import com.sprtcoding.tourizal.UserInformation.UserBasicInformation;
 import com.sprtcoding.tourizal.Utility.NetworkChangeListener;
 
@@ -86,6 +87,10 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(gotoAdminDashboard);
                                 finish();
                             }
+                        } else if (_accountType.equals("LGU")) {
+                            Intent gotoLGUDashboard = new Intent(MainActivity.this, LGUDashboard.class);
+                            startActivity(gotoLGUDashboard);
+                            finish();
                         }
                     }
                 }

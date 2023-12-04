@@ -38,10 +38,11 @@ import java.util.Map;
 
 public class Details extends AppCompatActivity {
     private ImageView back_btn, _img;
-    private TextView _my_name_txt, _user_name_txt, _room_name, _date_reserved, _contact, _status, price;
+    private TextView _my_name_txt, _user_name_txt, _room_name, _date_reserved, _contact, _status, price, guestNo, dayStayed, hourStayed;
     private MaterialButton approve_btn, decline_btn;
     String my_name, user_name, room_name, img_url, reserved_date, number, status, id, userToken
-            ,user_id, resort_id, resort_name, amenities_type;
+            ,user_id, resort_id, resort_name, amenities_type, _hour_stayed;
+    int _guestNo, _dayStayed;
     double room_price;
     private FirebaseFirestore db;
     private CollectionReference reservedColRef, resortColRef;
@@ -128,8 +129,15 @@ public class Details extends AppCompatActivity {
             String prices = getIntent().getStringExtra("pp");
             room_price = Double.parseDouble(prices);
             amenities_type = getIntent().getStringExtra("amenities_type");
+            _hour_stayed = getIntent().getStringExtra("hour_stayed");
+            _guestNo = getIntent().getIntExtra("guest_no",0);
+            _dayStayed = getIntent().getIntExtra("day_stayed",0);
 
-            price.setText("Price: " + convertToPhilippinePeso(room_price));
+            price.setText("Total Payment: " + convertToPhilippinePeso(room_price));
+
+            hourStayed.setText(_hour_stayed);
+            guestNo.setText("" + _guestNo);
+            dayStayed.setText("" + _dayStayed);
         }
 
         // Define the color for the status part
@@ -224,6 +232,9 @@ public class Details extends AppCompatActivity {
         approve_btn = findViewById(R.id.approve_btn);
         decline_btn = findViewById(R.id.decline_btn);
         price = findViewById(R.id.price);
+        guestNo = findViewById(R.id.guestNo);
+        dayStayed = findViewById(R.id.dayStayed);
+        hourStayed = findViewById(R.id.hourStayed);
     }
 
     private void sendNotification(String ID, String name, String resortName) {

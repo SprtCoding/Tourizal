@@ -19,7 +19,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Room Description"
+        android:text="Amenities Type"
         android:fontFamily="@font/poppins_bold"
         android:textColor="@color/dark"
         android:layout_marginTop="10dp"
@@ -46,7 +46,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
+        android:text="Aminities No"
         android:fontFamily="@font/poppins_bold"
         android:textColor="@color/dark"
         android:layout_marginTop="10dp"
@@ -56,7 +56,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
+        android:text="Details"
         android:fontFamily="@font/poppins"
         android:textColor="@color/dark"
         android:layout_marginTop="10dp"

@@ -45,9 +45,6 @@
                     android:gravity="center">
 
                     <RelativeLayout
-                        android:gravity="center_horizontal"
-                        android:paddingStart="@dimen/_20sdp"
-                        android:paddingEnd="@dimen/_20sdp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -143,6 +140,141 @@
                             android:textSize="@dimen/_11ssp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/guestNoTIL"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:hint="Guest Number"
+                        app:hintTextColor="#2E2E2E"
+                        android:textColorHint="#2E2E2E"
+                        app:startIconDrawable="@drawable/departure"
+                        android:layout_width="match_parent"
+                        app:endIconMode="clear_text"
+                        app:helperText="Ex. 1"
+                        app:helperTextTextColor="#BC5D5D"
+                        app:boxStrokeColor="@color/blue"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:startIconTint="@color/blue"
+                        app:endIconTint="@color/blue"
+                        app:boxBackgroundMode="outline"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/guestNumberET"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="number"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_11ssp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:id="@+id/stayedDuration_ll"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="10dp"
+                            android:text="Stay Duration"
+                            android:gravity="center"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textColor="@color/black"
+                            android:letterSpacing=".1"
+                            android:drawablePadding="10dp"
+                            app:drawableTint="@color/blue"
+                            app:drawableStartCompat="@drawable/baseline_wb_sunny_24" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:hint="Days"
+                            app:hintTextColor="#2E2E2E"
+                            android:textColorHint="#2E2E2E"
+                            app:startIconDrawable="@drawable/departure"
+                            android:layout_width="match_parent"
+                            app:endIconMode="clear_text"
+                            app:helperText="Ex. 1"
+                            app:helperTextTextColor="#BC5D5D"
+                            app:boxStrokeColor="@color/blue"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            app:startIconTint="@color/blue"
+                            app:endIconTint="@color/blue"
+                            app:boxBackgroundMode="outline"
+                            android:layout_height="wrap_content">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/daysET"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins"
+                                android:inputType="number"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_11ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="10dp"
+                            android:text="Hours"
+                            android:gravity="center"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textColor="@color/black"
+                            android:letterSpacing=".1"
+                            android:drawablePadding="10dp"
+                            android:layout_marginTop="10dp"
+                            app:drawableTint="@color/blue"
+                            app:drawableStartCompat="@drawable/baseline_wb_sunny_24" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/from_day_btn_reserved"
+                                android:layout_width="wrap_content"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:paddingTop="15dp"
+                                android:paddingBottom="15dp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="From"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="-"
+                                android:fontFamily="@font/poppins"
+                                android:textSize="@dimen/_12ssp"
+                                android:textColor="@color/black"
+                                android:layout_marginStart="5dp"/>
+
+                            <com.google.android.material.button.MaterialButton
+                                android:layout_marginStart="5dp"
+                                android:id="@+id/to_day_btn_reserved"
+                                android:layout_width="wrap_content"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_medium"
+                                android:paddingTop="15dp"
+                                android:paddingBottom="15dp"
+                                android:text="To"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/daytime_ll"

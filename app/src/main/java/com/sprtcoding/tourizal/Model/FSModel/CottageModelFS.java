@@ -4,7 +4,7 @@ public class CottageModelFS {
     String  OWNER_UID,
             RESORT_ID,
             COTTAGE_ID,
-            COTTAGE_PIC_ID ,
+            COTTAGE_PIC_ID,
             COTTAGE_PIC_NAME,
             DESCRIPTION,
             COTTAGE_PHOTO_URL;

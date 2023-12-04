@@ -72,19 +72,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
-                    android:text="\t\t\tTouRizal Android Application is design to give the user want to explore around Rizal, Occidental Mindoro."
+                    android:text="The Tourizal Android application is thoughtfully designed to immerse users in the captivating beauty of Rizal Occidental Mindoro with its resorts, providing a unique and enriching experience."
                     android:layout_marginBottom="20dp"
                     android:textSize="@dimen/_12ssp"
                     android:justificationMode="inter_word"
                     android:letterSpacing=".1"
                     android:textColor="@color/light_blue" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_150sdp"
-                    android:src="@drawable/resort"
-                    android:layout_marginBottom="10dp"
-                    android:contentDescription="@string/app_name"/>
 
                 <TextView
                     android:layout_width="wrap_content"

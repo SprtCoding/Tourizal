@@ -28,6 +28,7 @@ import com.sprtcoding.tourizal.R;
 import com.sprtcoding.tourizal.UsersViewPost.UserResortInfo;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class UserResortAdapter extends RecyclerView.Adapter<UserResortAdapter.ResortFilteredViewHolder>{
@@ -65,6 +66,7 @@ public class UserResortAdapter extends RecyclerView.Adapter<UserResortAdapter.Re
         FirebaseFirestore DB = FirebaseFirestore.getInstance();
         //CollectionReference resortRef = DB.collection("RESORTS");
         CollectionReference ratingRef = DB.collection("RATINGS");
+        DecimalFormat decimalFormat = new DecimalFormat("#.#");
 
         ratingRef.whereEqualTo("RESORT_ID", resort.getRESORT_ID())
                         .addSnapshotListener((value, error) -> {
@@ -78,7 +80,7 @@ public class UserResortAdapter extends RecyclerView.Adapter<UserResortAdapter.Re
                                     long numberOfReviews = value.size();
                                     float avgRating = ratingSum/numberOfReviews;
 
-                                    holder.resortRating.setText("" + avgRating);
+                                    holder.resortRating.setText(""+decimalFormat.format(avgRating));
                                     holder.resortComments.setText(""+numberOfReviews);
                                 }
                             }else {

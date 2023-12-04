@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bg"
     tools:context=".UserMenuFragment.UserHomeFragment">
 
     <androidx.cardview.widget.CardView
@@ -88,10 +87,10 @@
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/garet_black"
+                android:fontFamily="@font/poppins_bold"
                 android:text="Featured"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
+                android:textColor="@color/light_blue"
                 android:textSize="@dimen/_18ssp"
                 android:letterSpacing=".1"/>
 
@@ -178,7 +177,7 @@
                 android:layout_below="@id/featuredText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/garet_black"
+                android:fontFamily="@font/poppins_bold"
                 android:text="Search Resort"
                 android:textAllCaps="true"
                 android:textColor="@color/light_blue"
@@ -206,7 +205,7 @@
 
                 <AutoCompleteTextView
                     android:id="@+id/genderCTV"
-                    android:fontFamily="@font/garet_normal"
+                    android:fontFamily="@font/poppins"
                     android:inputType="none"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

@@ -18,7 +18,7 @@
             android:layout_height="@dimen/_100sdp"
             android:src="@drawable/resort"
             android:scaleType="fitXY"
-            android:id="@+id/roomPhoto"/>
+            android:id="@+id/poolPhoto"/>
 
         <LinearLayout
             android:layout_width="match_parent"

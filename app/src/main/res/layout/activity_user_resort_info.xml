@@ -370,14 +370,40 @@
                         android:fontFamily="@font/poppins_medium"
                         android:letterSpacing=".1"/>
 
-                    <androidx.recyclerview.widget.RecyclerView
+                    <LinearLayout
+                        android:id="@+id/roomVP_LL"
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:listitem="@layout/amenities_room_list"
-                        tools:itemCount="1"
                         android:layout_below="@id/roomsText"
-                        android:layout_marginTop="10dp"
-                        android:id="@+id/rooms_rv"/>
+                        android:orientation="vertical">
+
+                        <androidx.viewpager.widget.ViewPager
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:id="@+id/roomViewPager"
+                            />
+
+                        <com.google.android.material.tabs.TabLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/transparent"
+                            android:id="@+id/roomTabs"
+                            app:tabBackground="@drawable/white_indicator"
+                            app:tabGravity="center"
+                            app:tabIndicator="@null"
+                            app:tabIndicatorGravity="center"/>
+
+                    </LinearLayout>
+
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        tools:listitem="@layout/amenities_room_list"-->
+<!--                        tools:itemCount="1"-->
+<!--                        android:layout_below="@id/roomsText"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:id="@+id/rooms_rv"/>-->
 
                     <TextView
                         android:visibility="gone"
@@ -409,19 +435,35 @@
                         android:textAllCaps="true"
                         android:textSize="@dimen/_14ssp"
                         android:textColor="@color/white"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_medium"
                         android:letterSpacing=".1"/>
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:layout_marginBottom="20dp"
-                        android:layout_below="@id/cottageTxt"
+                    <LinearLayout
+                        android:id="@+id/cottageVP_LL"
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:listitem="@layout/amenities_cottage_list"
-                        tools:itemCount="1"
-                        android:layout_marginTop="10dp"
-                        android:id="@+id/cottage_rv"/>
+                        android:layout_below="@id/cottageTxt"
+                        android:orientation="vertical">
+
+                        <androidx.viewpager.widget.ViewPager
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:id="@+id/cottageViewPager"
+                            />
+
+                        <com.google.android.material.tabs.TabLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/transparent"
+                            android:id="@+id/cottageTabs"
+                            app:tabBackground="@drawable/white_indicator"
+                            app:tabGravity="center"
+                            app:tabIndicator="@null"
+                            app:tabIndicatorGravity="center"/>
+
+                    </LinearLayout>
 
                     <TextView
                         android:visibility="gone"
@@ -436,6 +478,98 @@
                         android:textAllCaps="true"
                         android:textColor="@color/grey"
                         android:layout_below="@id/cottageTxt"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/poolLL">
+
+                    <TextView
+                        android:id="@+id/poolTxt"
+                        android:layout_alignParentTop="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pool"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/_14ssp"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:letterSpacing=".1"/>
+
+                    <LinearLayout
+                        android:id="@+id/poolVP_LL"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/poolTxt"
+                        android:orientation="vertical">
+
+                        <androidx.viewpager.widget.ViewPager
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:id="@+id/poolViewPager"
+                            />
+
+                        <com.google.android.material.tabs.TabLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/transparent"
+                            android:id="@+id/poolTabs"
+                            app:tabBackground="@drawable/white_indicator"
+                            app:tabGravity="center"
+                            app:tabIndicator="@null"
+                            app:tabIndicatorGravity="center"/>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/kayakinLL">
+
+                    <TextView
+                        android:id="@+id/kayakinTxt"
+                        android:layout_alignParentTop="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kayakin"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/_14ssp"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:letterSpacing=".1"/>
+
+                    <LinearLayout
+                        android:id="@+id/kayakVP_LL"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/kayakinTxt"
+                        android:orientation="vertical">
+
+                        <androidx.viewpager.widget.ViewPager
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:id="@+id/kayakViewPager"
+                            />
+
+                        <com.google.android.material.tabs.TabLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/transparent"
+                            android:id="@+id/kayakTabs"
+                            app:tabBackground="@drawable/white_indicator"
+                            app:tabGravity="center"
+                            app:tabIndicator="@null"
+                            app:tabIndicatorGravity="center"/>
+
+                    </LinearLayout>
 
                 </RelativeLayout>
 

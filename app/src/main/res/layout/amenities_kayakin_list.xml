@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/amenitiesRoomCard"
+    android:layout_margin="5dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="@dimen/_110sdp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/ll"
+            android:layout_alignBottom="@id/ll"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/resort"
+            android:scaleType="fitXY"
+            android:id="@+id/kayakinPhoto"/>
+
+        <LinearLayout
+            android:layout_toEndOf="@id/kayakinPhoto"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/ll"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/kayakinName"
+                android:text="Kayakin Name"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_bold"
+                android:letterSpacing=".1"
+                android:textAllCaps="true"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/light_blue"/>
+
+            <TextView
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/kayakinDesc"
+                android:text="Decription"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins"
+                android:letterSpacing=".1"
+                android:textSize="@dimen/_10ssp"
+                android:textColor="@color/light_blue"/>
+
+            <TextView
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rentPrice"
+                android:drawablePadding="5dp"
+                android:text="0.0"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_medium"
+                android:letterSpacing=".1"
+                android:textSize="@dimen/_10ssp"
+                android:textColor="@color/light_blue" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

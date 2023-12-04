@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -58,6 +59,7 @@ public class UserHomeFragment extends Fragment {
     private ViewPager featuredViewPager;
     private TabLayout tabs;
     private FirebaseAuth mAuth;
+    private FirebaseUser mUser;
     private FirebaseDatabase mDb;
     private DatabaseReference userRef;
     UserFeaturedViewPagerAdapter userFeaturedViewPagerAdapter;
@@ -100,31 +102,34 @@ public class UserHomeFragment extends Fragment {
         });
 
         mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
         mDb = FirebaseDatabase.getInstance();
         userRef = mDb.getReference("Users");
 
-        userRef.child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()) {
-                    if(snapshot.hasChild("PhotoURL")) {
-                        String photoURL = snapshot.child("PhotoURL").getValue(String.class);
-                        try {
-                            Picasso.get().load(photoURL).into(profile);
-                        }catch (Exception ex) {
+        if(mUser != null) {
+            userRef.child(mUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.exists()) {
+                        if(snapshot.hasChild("PhotoURL")) {
+                            String photoURL = snapshot.child("PhotoURL").getValue(String.class);
+                            try {
+                                Picasso.get().load(photoURL).into(profile);
+                            }catch (Exception ex) {
+                                Picasso.get().load(R.drawable.default_profile).into(profile);
+                            }
+                        }else {
                             Picasso.get().load(R.drawable.default_profile).into(profile);
                         }
-                    }else {
-                        Picasso.get().load(R.drawable.default_profile).into(profile);
                     }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
         resortsModels = new ArrayList<>();
         featuredPostModels = new ArrayList<>();
@@ -135,6 +140,8 @@ public class UserHomeFragment extends Fragment {
         featuredViewPager.setPageMargin(30);
 
         LinearLayoutManager llm_Vertical = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        llm_Vertical.setReverseLayout(true);
+        llm_Vertical.setStackFromEnd(true);
         resortFilteredRecycleView.setHasFixedSize(true);
         resortFilteredRecycleView.setLayoutManager(llm_Vertical);
 

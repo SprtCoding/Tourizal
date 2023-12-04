@@ -36,6 +36,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.sprtcoding.tourizal.AdminDashboardPage;
 import com.sprtcoding.tourizal.ForgotPassword.ForgotPassword;
+import com.sprtcoding.tourizal.LGU.LGUDashboard;
 import com.sprtcoding.tourizal.MainActivity;
 import com.sprtcoding.tourizal.R;
 import com.sprtcoding.tourizal.UserDashBoard;
@@ -43,6 +44,7 @@ import com.sprtcoding.tourizal.UserInformation.UserBasicInformation;
 import com.sprtcoding.tourizal.Utility.NetworkChangeListener;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Login extends AppCompatActivity {
     private TextView _signUpBtn, _forgotPasswordBtn;
@@ -79,8 +81,8 @@ public class Login extends AppCompatActivity {
             loading.show();
             Handler handler = new Handler();
             Runnable runnable = () -> {
-                email = _emailET.getText().toString().trim();
-                password = _passET.getText().toString();
+                email = Objects.requireNonNull(_emailET.getText()).toString().trim();
+                password = Objects.requireNonNull(_passET.getText()).toString();
 
                 if (TextUtils.isEmpty(email)) {
                     loading.dismiss();
@@ -138,26 +140,27 @@ public class Login extends AppCompatActivity {
     }
 
     private void LoginEmailPassword(String email, String password) {
-        mAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(authResult -> {
-            userRef.child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if(snapshot.exists()) {
-                        if (snapshot.hasChild("AccountType")) {
-                            String accountType = snapshot.child("AccountType").getValue(String.class);
+        mAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(authResult -> userRef.child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()) {
+                    if (snapshot.hasChild("AccountType")) {
+                        String accountType = snapshot.child("AccountType").getValue(String.class);
+
+                        FirebaseMessaging.getInstance().getToken()
+                                .addOnCompleteListener(task1 -> {
+                                    if (!task1.isSuccessful()) {
+                                        Toast.makeText(Login.this, "Fetching FCM registration token failed :" + task1.getException(), Toast.LENGTH_SHORT).show();
+                                        return;
+                                    }
+
+                                    // Get new FCM registration token
+                                    String token = task1.getResult();
+                                    userTokenRef.child(mAuth.getCurrentUser().getUid()).child("token").setValue(token);
+                                });
+
+                        if(accountType != null) {
                             if (accountType.equals("User")) {
-                                FirebaseMessaging.getInstance().getToken()
-                                        .addOnCompleteListener(task1 -> {
-                                            if (!task1.isSuccessful()) {
-                                                Toast.makeText(Login.this, "Fetching FCM registration token failed :" + task1.getException(), Toast.LENGTH_SHORT).show();
-                                                return;
-                                            }
-
-                                            // Get new FCM registration token
-                                            String token = task1.getResult();
-                                            userTokenRef.child(mAuth.getCurrentUser().getUid()).child("token").setValue(token);
-                                        });
-
                                 if(!snapshot.hasChild("Age") && !snapshot.hasChild("Gender") && !snapshot.hasChild("DateOfBirth")) {
                                     loading.dismiss();
                                     Intent gotoUserBasicInfo = new Intent(Login.this, UserBasicInformation.class);
@@ -181,20 +184,25 @@ public class Login extends AppCompatActivity {
                                     startActivity(gotoAdminDashboard);
                                     finish();
                                 }
+                            } else if (accountType.equals("LGU")) {
+                                loading.dismiss();
+                                Intent gotoLGUDashboard = new Intent(Login.this, LGUDashboard.class);
+                                startActivity(gotoLGUDashboard);
+                                finish();
                             }
                         }
                     }
                 }
+            }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    loading.dismiss();
-                    Log.d("ERROR", error.getMessage());
-                }
-            });
-        }).addOnFailureListener(e -> {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                loading.dismiss();
+                Log.d("ERROR", error.getMessage());
+            }
+        })).addOnFailureListener(e -> {
             loading.dismiss();
-            Log.d("ERROR", e.getMessage());
+            Log.d("ERROR", Objects.requireNonNull(e.getMessage()));
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         });
     }
@@ -244,7 +252,7 @@ public class Login extends AppCompatActivity {
                                 gotoUserDashboard();
                             } else {
                                 loading.dismiss();
-                                Toast.makeText(this, task1.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, Objects.requireNonNull(task1.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
             } catch (ApiException e) {
@@ -255,7 +263,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void gotoUserDashboard() {
-        userRef.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+        userRef.child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()) {

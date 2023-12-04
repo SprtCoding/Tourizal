@@ -20,13 +20,10 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.sprtcoding.tourizal.Adapter.AdminCottageAdapter;
 import com.sprtcoding.tourizal.Adapter.FireStoreAdapter.CottageAdapterFS;
 import com.sprtcoding.tourizal.Model.CottageModel;
 import com.sprtcoding.tourizal.Model.FSModel.CottageModelFS;
@@ -42,8 +39,6 @@ public class ManageCottages extends AppCompatActivity {
     private LinearLayout _no_post_cottage_ll;
     private FloatingActionButton _add_cottage_btn;
     private FirebaseAuth mAuth;
-    private FirebaseDatabase mDb;
-    private DatabaseReference cottagePostRef;
     private CottageAdapterFS cottageAdapterFS;
     FirebaseFirestore DB;
     CollectionReference resortCollectionRef;
@@ -72,12 +67,12 @@ public class ManageCottages extends AppCompatActivity {
         resortCollectionRef = DB.collection("RESORTS");
 
         mAuth = FirebaseAuth.getInstance();
-        mDb = FirebaseDatabase.getInstance();
-        cottagePostRef = mDb.getReference("Cottages");
 
         _user = mAuth.getCurrentUser();
 
         LinearLayoutManager llm = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        llm.setReverseLayout(true);
+        llm.setStackFromEnd(true);
         _admin_cottage_rv.setHasFixedSize(true);
         _admin_cottage_rv.setLayoutManager(llm);
 

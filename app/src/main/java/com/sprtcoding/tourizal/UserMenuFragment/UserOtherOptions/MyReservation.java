@@ -89,8 +89,11 @@ public class MyReservation extends AppCompatActivity {
                                             doc.getString("DAYTIME"),
                                             doc.getString("USER_PHOTO_URL"),
                                             doc.getString("AMENITIES_TYPE"),
+                                            doc.getString("HOURS_STAYED"),
                                             doc.getLong("PRICE").longValue(),
                                             doc.getLong("AMENITIES_NO").intValue(),
+                                            doc.getLong("DAYS_STAYED").intValue(),
+                                            doc.getLong("GUEST_NO").intValue(),
                                             doc.getBoolean("READ").booleanValue()
                                     ));
                                 }

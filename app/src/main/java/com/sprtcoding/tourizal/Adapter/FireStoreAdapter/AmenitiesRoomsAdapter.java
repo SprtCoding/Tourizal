@@ -107,7 +107,7 @@ public class AmenitiesRoomsAdapter extends RecyclerView.Adapter<AmenitiesRoomsAd
 
         DBQuery.g_firestore = FirebaseFirestore.getInstance();
 
-        Picasso.get().load(rooms.getROOM_PHOTO_URL()).into(holder._roomPhoto);
+        Picasso.get().load(rooms.getROOM_PHOTO_URL().get(position)).into(holder._roomPhoto);
         holder._roomName.setText("ROOM " + rooms.getROOM_NO());
         holder._rentPrice.setText(convertToPhilippinePeso(rooms.getDAY_PRICE()));
         holder._roomDescription.setText(rooms.getDESCRIPTION());
@@ -116,13 +116,13 @@ public class AmenitiesRoomsAdapter extends RecyclerView.Adapter<AmenitiesRoomsAd
             if (isClicked) {
                 // Switch back to night mode
                 holder._switchBtn.setImageResource(R.drawable.baseline_bedtime_24);
-                Picasso.get().load(rooms.getROOM_PHOTO_URL()).into(holder._roomPhoto);
+                Picasso.get().load(rooms.getROOM_PHOTO_URL().get(position)).into(holder._roomPhoto);
                 holder._roomName.setText("ROOM " + rooms.getROOM_NO());
                 holder._rentPrice.setText(convertToPhilippinePeso(rooms.getNIGHT_PRICE()));
             } else {
                 // Switch to day mode
                 holder._switchBtn.setImageResource(R.drawable.baseline_wb_sunny_24); // Change to the day icon
-                Picasso.get().load(rooms.getROOM_PHOTO_URL()).into(holder._roomPhoto);
+                Picasso.get().load(rooms.getROOM_PHOTO_URL().get(position)).into(holder._roomPhoto);
                 holder._roomName.setText("ROOM " + rooms.getROOM_NO());
                 holder._rentPrice.setText(convertToPhilippinePeso(rooms.getDAY_PRICE()));
                 // Update other views for day mode if needed
@@ -238,7 +238,7 @@ public class AmenitiesRoomsAdapter extends RecyclerView.Adapter<AmenitiesRoomsAd
         room_no_text.setText("Reserved ROOM " + rooms.getROOM_NO());
         your_name_ET.setText(name);
 
-        Picasso.get().load(rooms.getROOM_PHOTO_URL()).into(room_pic);
+        Picasso.get().load(rooms.getROOM_PHOTO_URL().get(roomsModels.size())).into(room_pic);
 
         _closeDialogBtn.setOnClickListener(view -> reservationDialogs.cancel());
 
@@ -302,6 +302,9 @@ public class AmenitiesRoomsAdapter extends RecyclerView.Adapter<AmenitiesRoomsAd
                             rooms.getOWNER_UID(),
                             user.getUid(),
                             "Rooms",
+                            0,
+                            "",
+                            0,
                             false,
                             rooms.getRESORT_ID(),
                             rooms.getROOM_ID(),
@@ -318,7 +321,7 @@ public class AmenitiesRoomsAdapter extends RecyclerView.Adapter<AmenitiesRoomsAd
                             price,
                             false,
                             userPic,
-                            rooms.getROOM_PHOTO_URL()
+                            rooms.getROOM_PHOTO_URL().get(roomsModels.size())
                             , new MyCompleteListener() {
                                 @Override
                                 public void onSuccess() {

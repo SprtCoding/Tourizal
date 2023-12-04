@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home_18"
+            android:title="Home"/>
+
+        <item
+            android:id="@+id/nav_postRequest"
+            android:icon="@drawable/resort_post"
+            android:title="Post Request(Resort)"/>
+
+        <item
+            android:id="@+id/nav_acceptedResort"
+            android:icon="@drawable/resort_post"
+            android:title="Accepted Resort"/>
+
+    </group>
+
+    <item
+        android:title="Account"
+        android:checkable="true">
+
+        <menu>
+
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/baseline_exit_to_app_24"
+                android:title="Sign Out"/>
+
+        </menu>
+
+    </item>
+
+</menu>

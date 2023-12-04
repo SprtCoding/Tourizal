@@ -88,9 +88,9 @@ public class AdminReservationAdapter extends RecyclerView.Adapter<AdminReservati
         holder.user_contact.setText(reserved.getCONTACT_OF_USER());
 
         if(reserved.getAMENITIES_TYPE().equals("Rooms")) {
-            holder.room_no.setText("Booked Room " + reserved.getAMENITIES_NO());
+            holder.room_no.setText("Reserved Room " + reserved.getAMENITIES_NO());
         } else {
-            holder.room_no.setText("Booked Cottage " + reserved.getAMENITIES_NO());
+            holder.room_no.setText("Reserved Cottage " + reserved.getAMENITIES_NO());
         }
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -132,8 +132,25 @@ public class AdminReservationAdapter extends RecyclerView.Adapter<AdminReservati
                 reservedColRef.document(reserved.getRESERVED_ID())
                         .update(map)
                         .addOnSuccessListener(unused -> {
-                            loading.dismiss();
-                            Toast.makeText(context, "Removed successfully!", Toast.LENGTH_SHORT).show();
+
+                            DBQuery.updateIsReadAll(
+                                    true,
+                                    reserved.getRESERVED_ID(),
+                                    new MyCompleteListener() {
+                                        @Override
+                                        public void onSuccess() {
+                                            loading.dismiss();
+                                            Toast.makeText(context, "Removed successfully!", Toast.LENGTH_SHORT).show();
+                                        }
+
+                                        @Override
+                                        public void onFailure(Exception e) {
+                                            loading.dismiss();
+                                            Toast.makeText(context, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                            );
+
                         })
                         .addOnFailureListener(e -> Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show());
             });
@@ -146,13 +163,30 @@ public class AdminReservationAdapter extends RecyclerView.Adapter<AdminReservati
                 reservedColRef.document(reserved.getRESERVED_ID())
                         .update(map)
                         .addOnSuccessListener(unused -> {
-                            loading.dismiss();
-                            sendDeclineNotification(
-                                    reserved.getMY_UID(),
-                                    reserved.getNAME_OF_USER(),
-                                    resort_name
+
+                            DBQuery.updateIsReadAll(
+                                    true,
+                                    reserved.getRESERVED_ID(),
+                                    new MyCompleteListener() {
+                                        @Override
+                                        public void onSuccess() {
+                                            loading.dismiss();
+                                            sendDeclineNotification(
+                                                    reserved.getMY_UID(),
+                                                    reserved.getNAME_OF_USER(),
+                                                    resort_name
+                                            );
+                                            Toast.makeText(context, "Declined successfully!", Toast.LENGTH_SHORT).show();
+                                        }
+
+                                        @Override
+                                        public void onFailure(Exception e) {
+                                            loading.dismiss();
+                                            Toast.makeText(context, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
                             );
-                            Toast.makeText(context, "Declined successfully!", Toast.LENGTH_SHORT).show();
+
                         })
                         .addOnFailureListener(e -> Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show());
             });
@@ -185,6 +219,9 @@ public class AdminReservationAdapter extends RecyclerView.Adapter<AdminReservati
                             i.putExtra("status", reserved.getSTATUS());
                             i.putExtra("reserved_id", reserved.getRESERVED_ID());
                             i.putExtra("resort_id", reserved.getRESORT_ID());
+                            i.putExtra("guest_no", reserved.getGUEST_NO());
+                            i.putExtra("day_stayed", reserved.getNO_OF_DAYS_STAYED());
+                            i.putExtra("hour_stayed", reserved.getHOURS_STAYED());
                             i.putExtra("pp", price);
                             context.startActivity(i);
                         }
@@ -206,13 +243,30 @@ public class AdminReservationAdapter extends RecyclerView.Adapter<AdminReservati
             reservedColRef.document(reserved.getRESERVED_ID())
                     .update(map)
                     .addOnSuccessListener(unused -> {
-                        loading.dismiss();
-                        sendNotification(
-                                reserved.getMY_UID(),
-                                reserved.getNAME_OF_USER(),
-                                resort_name
+
+                        DBQuery.updateIsReadAll(
+                                true,
+                                reserved.getRESERVED_ID(),
+                                new MyCompleteListener() {
+                                    @Override
+                                    public void onSuccess() {
+                                        loading.dismiss();
+                                        sendNotification(
+                                                reserved.getMY_UID(),
+                                                reserved.getNAME_OF_USER(),
+                                                resort_name
+                                        );
+                                        Toast.makeText(context, "Approved successfully!", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                    @Override
+                                    public void onFailure(Exception e) {
+                                        loading.dismiss();
+                                        Toast.makeText(context, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
                         );
-                        Toast.makeText(context, "Approved successfully!", Toast.LENGTH_SHORT).show();
+
                     })
                     .addOnFailureListener(e -> Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show());
         });

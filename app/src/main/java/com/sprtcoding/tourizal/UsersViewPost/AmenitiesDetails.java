@@ -16,7 +16,7 @@ import com.squareup.picasso.Picasso;
 public class AmenitiesDetails extends AppCompatActivity {
     private ImageView roomPic, backBtn;
     private TextView roomName, roomDescription, _amenitiesType;
-    String amenitiesType, roomPicURL, roomDesc;
+    String amenitiesType, roomPicURL, roomDesc, poolSwimmer, poolType;
     int roomNo;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
@@ -32,6 +32,8 @@ public class AmenitiesDetails extends AppCompatActivity {
             roomPicURL = getIntent().getStringExtra("RoomPicURL");
             roomDesc = getIntent().getStringExtra("Details");
             roomNo = getIntent().getIntExtra("RoomName", 0);
+            poolSwimmer = getIntent().getStringExtra("Pool_swimmer");
+            poolType = getIntent().getStringExtra("Pool_type");
 
             _amenitiesType.setText(amenitiesType + " Description");
             Picasso.get()
@@ -45,6 +47,13 @@ public class AmenitiesDetails extends AppCompatActivity {
                 roomName.setText("Room " + roomNo);
             } else if(amenitiesType.equals("Cottage")) {
                 roomName.setText("Cottage " + roomNo);
+            } else if(amenitiesType.equals("Pool")) {
+                roomName.setText("Pool " + roomNo);
+                roomDescription.setText(roomDescription.getText().toString() + "\nPool Type: " + poolType + " Pool"
+                + "\nFor " + poolSwimmer
+                );
+            } else if(amenitiesType.equals("Kayak")) {
+                roomName.setText("Kayak " + roomNo);
             }
         }
 

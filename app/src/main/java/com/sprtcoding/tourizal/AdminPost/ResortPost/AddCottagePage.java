@@ -7,14 +7,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -49,33 +54,38 @@ import com.sprtcoding.tourizal.R;
 import com.sprtcoding.tourizal.Utility.NetworkChangeListener;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class AddCottagePage extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser _user;
-    private FirebaseDatabase mDb;
-    private DatabaseReference cottagePostRef, resortPostRef;
     private StorageReference cottagePhotoRef;
     FirebaseFirestore DB;
     CollectionReference resortCollectionRef;
     private ImageView _cottagePhoto, backBtn;
-    private TextView _openFile;
+    private TextView _openFile, _title;
     private MaterialButton _postBtn;
     private TextInputEditText _cottageNumberET, _descriptionET, _cottageFeeET;
-    private RecyclerView _resort_rv;
     ProgressDialog _loading;
     private String _cottageID, cottagePicID, cottagePicName;
-    public static String _resortID;
+    public static String _resortID, updateResortID, updateCottageID, updateCottagePicURL, updateCottageDesc, updateCottagePicName, updateCottagePicID;
+    private int updateCottageNo;
+    private float updateCottageFee;
+    private boolean isUpdate;
     private static final int PHOTO_IMAGE_REQUEST = 1;
     private Uri _imgURI;
-    ResortSelectAdapter resortSelectAdapter;
     List<ResortsModel> resortsModels;
-    public static AlertDialog resortDialog;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +106,26 @@ public class AddCottagePage extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         _user = mAuth.getCurrentUser();
 
+        if(getIntent() != null) {
+            isUpdate = getIntent().getBooleanExtra("isUpdate",false);
+            updateResortID = getIntent().getStringExtra("resortID");
+            updateCottageID = getIntent().getStringExtra("cottageID");
+            updateCottagePicURL = getIntent().getStringExtra("cottagePicUrl");
+            updateCottageDesc = getIntent().getStringExtra("cottageDesc");
+            updateCottageNo = getIntent().getIntExtra("cottageNo", 0);
+            updateCottageFee = getIntent().getFloatExtra("cottageFee", 0);
+            updateCottagePicName  = getIntent().getStringExtra("cottagePicName");
+            updateCottagePicID  = getIntent().getStringExtra("cottagePicID");
+
+            if(isUpdate) {
+                _title.setText("Update Cottage");
+                Picasso.get().load(updateCottagePicURL).placeholder(R.drawable.room_bed).into(_cottagePhoto);
+                _cottageNumberET.setText(String.valueOf(updateCottageNo));
+                _cottageFeeET.setText(String.valueOf(updateCottageFee));
+                _descriptionET.setText(updateCottageDesc);
+            }
+        }
+
         cottagePhotoRef = FirebaseStorage.getInstance().getReference("CottagesPhotos/");
 
         _openFile.setOnClickListener(view -> {
@@ -115,7 +145,11 @@ public class AddCottagePage extends AppCompatActivity {
             }else if(TextUtils.isEmpty(cottageFee)) {
                 Toast.makeText(this, "Please add cottage fee!", Toast.LENGTH_SHORT).show();
             }else {
-                uploadFile();
+                if(isUpdate) {
+                    updateFile();
+                }else {
+                    uploadFile();
+                }
             }
         });
 
@@ -124,6 +158,137 @@ public class AddCottagePage extends AppCompatActivity {
             startActivity(gotoManageRooms);
             finish();
         });
+    }
+
+    private void updateFile() {
+        if (_imgURI != null || _cottagePhoto.getDrawable() != null) {
+            if (_imgURI != null) {
+                StorageReference resortRef = cottagePhotoRef.child(updateCottagePicID).child(updateCottagePicName + "." + getFileExtension(_imgURI));
+                UploadTask uploadTask = resortRef.putFile(_imgURI);
+
+                uploadTask.continueWithTask(task -> {
+                    if (!task.isSuccessful()) {
+                        throw Objects.requireNonNull(task.getException());
+                    }
+                    return resortRef.getDownloadUrl();
+                }).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Uri downloadURI = (Uri) task.getResult();
+                        if (downloadURI != null) {
+                            String myUri = downloadURI.toString();
+                            uploadAllUpdates(myUri);
+                        } else {
+                            // Handle the case when downloadURI is null
+                            Toast.makeText(this, "Failed to get download URL", Toast.LENGTH_SHORT).show();
+                            _loading.dismiss();
+                        }
+                    } else {
+                        // Handle the case when the upload task is not successful
+                        Toast.makeText(this, "Upload failed: " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                        _loading.dismiss();
+                    }
+                });
+            } else {
+                // If _imgURI is null but there is an image in _resortPhoto, you can extract the drawable and convert it to a Uri.
+                // Replace "R.drawable.default_image" with the appropriate default image resource.
+                new ConvertDrawableToUriTask().execute(_cottagePhoto.getDrawable());
+            }
+        } else {
+            Toast.makeText(this, "No file selected!", Toast.LENGTH_SHORT).show();
+            _loading.dismiss();
+        }
+    }
+
+    private class ConvertDrawableToUriTask extends AsyncTask<Drawable, Void, String> {
+        @Override
+        protected String doInBackground(Drawable... drawables) {
+            Drawable drawable = drawables[0];
+            if (drawable instanceof BitmapDrawable) {
+                Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+                return saveBitmapAndGetUri(bitmap);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String myUri) {
+            if (myUri != null) {
+                //uploadAllUpdates(myUri);
+                StorageReference resortRef = cottagePhotoRef.child(updateCottagePicName + "." + getFileExtension(Uri.parse(myUri)));
+                UploadTask uploadTask = resortRef.putFile(Uri.parse(myUri));
+
+                uploadTask.continueWithTask(task -> {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
+                    }
+                    return resortRef.getDownloadUrl();
+                }).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Uri downloadURI = (Uri) task.getResult();
+                        if (downloadURI != null) {
+                            String myUri1 = downloadURI.toString();
+                            uploadAllUpdates(myUri1);
+                        } else {
+                            // Handle the case when downloadURI is null
+                            Toast.makeText(AddCottagePage.this, "Failed to get download URL", Toast.LENGTH_SHORT).show();
+                            _loading.dismiss();
+                        }
+                    } else {
+                        // Handle the case when the upload task is not successful
+                        Toast.makeText(AddCottagePage.this, "Upload failed: " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                        _loading.dismiss();
+                    }
+                });
+            } else {
+                // Handle the case when Uri conversion fails.
+                Toast.makeText(AddCottagePage.this, "Failed to convert drawable to Uri", Toast.LENGTH_SHORT).show();
+                _loading.dismiss();
+            }
+        }
+    }
+
+    private String saveBitmapAndGetUri(Bitmap bitmap) {
+        // You need to implement a method to save the Bitmap as a file and return the Uri.
+        // Example code for saving a Bitmap to a file:
+        File imageFile = new File(getExternalCacheDir(), updateCottagePicName + ".png");
+        OutputStream os;
+        try {
+            os = new FileOutputStream(imageFile);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);
+            os.flush();
+            os.close();
+            return Uri.fromFile(imageFile).toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private void uploadAllUpdates(String myUri) {
+        String cottageNumber = _cottageNumberET.getText().toString();
+        String description = _descriptionET.getText().toString();
+        String cottageFee = _cottageFeeET.getText().toString();
+
+        Map<String, Object> updateValue = new HashMap<>();
+        updateValue.put("COTTAGE_NO", Integer.parseInt(cottageNumber));
+        updateValue.put("DESCRIPTION", description);
+        updateValue.put("PRICE", Float.parseFloat(cottageFee));
+        updateValue.put("COTTAGE_PHOTO_URL", myUri);
+
+        resortCollectionRef.document(updateResortID)
+                .collection("COTTAGE").document(updateCottageID)
+                .update(updateValue)
+                .addOnSuccessListener(unused -> {
+                    _loading.dismiss();
+                    Toast.makeText(this, "Cottage " + cottageNumber + " updated successfully.", Toast.LENGTH_SHORT).show();
+                    Intent gotoManageRooms = new Intent(this, ManageCottages.class);
+                    startActivity(gotoManageRooms);
+                    finish();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    _loading.dismiss();
+                });
     }
 
     private void uploadFile() {
@@ -218,6 +383,7 @@ public class AddCottagePage extends AppCompatActivity {
     }
 
     private void _var() {
+        _title = findViewById(R.id.title);
         _cottagePhoto = findViewById(R.id.CottagePhoto);
         _openFile = findViewById(R.id.openFile);
         _postBtn = findViewById(R.id.postBtn);
@@ -255,7 +421,7 @@ public class AddCottagePage extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent gotoManageRooms = new Intent(this, ManageRooms.class);
+        Intent gotoManageRooms = new Intent(this, ManageCottages.class);
         startActivity(gotoManageRooms);
         finish();
     }

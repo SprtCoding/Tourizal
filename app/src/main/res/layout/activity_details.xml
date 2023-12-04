@@ -8,208 +8,305 @@
     android:padding="20dp"
     tools:context=".AdminMenu.Reservation.Details">
 
-    <ImageView
-        android:id="@+id/back_btn"
-        android:layout_width="@dimen/_24sdp"
-        android:layout_height="@dimen/_24sdp"
-        android:src="@drawable/baseline_arrow_back_24"
-        app:tint="@color/black"
-        android:scaleType="centerInside"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello, "
-        android:layout_below="@id/back_btn"
-        android:textColor="@color/black"
-        android:fontFamily="@font/poppins_black"
-        android:textSize="@dimen/_20ssp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:id="@+id/hello_txt"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Full Name"
-        android:layout_toEndOf="@id/hello_txt"
-        android:layout_alignTop="@id/hello_txt"
-        android:layout_alignBottom="@id/hello_txt"
-        android:textColor="@color/black"
-        android:fontFamily="@font/poppins_black"
-        android:textSize="@dimen/_20ssp"
-        android:id="@+id/my_name_txt"/>
-
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/hello_txt"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="User Name"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppins_bold"
-            android:textSize="@dimen/_14ssp"
-            android:id="@+id/user_name_txt"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Booked"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppins"
-            android:textSize="@dimen/_13ssp"/>
-
-        <TextView
-            android:id="@+id/room_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Room/Cottage Name"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppins_bold"
-            android:textSize="@dimen/_12ssp"/>
-
-        <ImageView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/resort"
-            android:scaleType="fitXY"
-            android:id="@+id/img"
-            android:contentDescription="picture"/>
+            android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/back_btn"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:src="@drawable/baseline_arrow_back_24"
+                app:tint="@color/black"
+                android:scaleType="centerInside"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reservation Date :"
+                android:text="Hello, "
+                android:layout_below="@id/back_btn"
                 android:textColor="@color/black"
-                android:fontFamily="@font/poppins_bold"
-                android:textSize="@dimen/_13ssp"/>
-
-            <TextView
-                android:id="@+id/date_reserved"
-                android:layout_marginStart="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date"
-                android:textColor="@color/black"
-                android:fontFamily="@font/poppins"
-                android:textSize="@dimen/_13ssp"
-                android:drawablePadding="5dp"
-                android:gravity="center"
-                app:drawableStartCompat="@drawable/calendar_check_18" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:orientation="horizontal">
+                android:fontFamily="@font/poppins_black"
+                android:textSize="@dimen/_20ssp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:id="@+id/hello_txt"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Contact Number :"
+                android:text="Full Name"
+                android:layout_toEndOf="@id/hello_txt"
+                android:layout_alignTop="@id/hello_txt"
+                android:layout_alignBottom="@id/hello_txt"
                 android:textColor="@color/black"
-                android:fontFamily="@font/poppins_bold"
-                android:textSize="@dimen/_13ssp"/>
+                android:fontFamily="@font/poppins_black"
+                android:textSize="@dimen/_20ssp"
+                android:id="@+id/my_name_txt"/>
 
-            <TextView
-                android:id="@+id/contact"
-                android:layout_marginStart="15dp"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Number"
-                android:textColor="@color/black"
-                android:fontFamily="@font/poppins"
-                android:textSize="@dimen/_13ssp"
-                android:drawablePadding="5dp"
-                android:gravity="center"
-                app:drawableTint="@color/black"
-                app:drawableStartCompat="@drawable/phone_call_18" />
+                android:layout_below="@id/hello_txt"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="User Name"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="@dimen/_14ssp"
+                    android:id="@+id/user_name_txt"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reserved"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="@dimen/_13ssp"/>
 
-            <TextView
-                android:id="@+id/status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textColor="@color/black"
-                android:fontFamily="@font/poppins"
-                android:textSize="@dimen/_13ssp"
-                android:drawablePadding="5dp"
-                android:gravity="center" />
+                <TextView
+                    android:id="@+id/room_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Room/Cottage Name"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="@dimen/_12ssp"/>
 
-        </LinearLayout>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/resort"
+                    android:scaleType="fitXY"
+                    android:id="@+id/img"
+                    android:contentDescription="picture"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Price:"
-                android:textColor="@color/black"
-                android:fontFamily="@font/poppins"
-                android:textSize="@dimen/_13ssp"
-                android:drawablePadding="5dp"
-                android:gravity="center" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Reservation Date :"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textSize="@dimen/_13ssp"/>
 
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/date_reserved"
+                        android:layout_marginStart="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins"
+                        android:textSize="@dimen/_13ssp"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        app:drawableStartCompat="@drawable/calendar_check_18" />
 
-        <LinearLayout
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:gravity="end"
-            android:orientation="horizontal">
+                </LinearLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/approve_btn"
-                android:paddingStart="30dp"
-                android:paddingEnd="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#31955B"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Approve"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="horizontal">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/decline_btn"
-                android:layout_marginStart="10dp"
-                android:paddingStart="30dp"
-                android:paddingEnd="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/red"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Decline"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Contact Number :"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textSize="@dimen/_13ssp"/>
 
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/contact"
+                        android:layout_marginStart="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Number"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins"
+                        android:textSize="@dimen/_13ssp"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        app:drawableTint="@color/black"
+                        app:drawableStartCompat="@drawable/phone_call_18" />
 
-    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Guest Number :"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textSize="@dimen/_13ssp"/>
+
+                    <TextView
+                        android:id="@+id/guestNo"
+                        android:layout_marginStart="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Number"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins"
+                        android:textSize="@dimen/_13ssp"
+                        android:drawablePadding="5dp"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Days :"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textSize="@dimen/_13ssp"/>
+
+                    <TextView
+                        android:id="@+id/dayStayed"
+                        android:layout_marginStart="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Number"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins"
+                        android:textSize="@dimen/_13ssp"
+                        android:drawablePadding="5dp"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hours :"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textSize="@dimen/_13ssp"/>
+
+                    <TextView
+                        android:id="@+id/hourStayed"
+                        android:layout_marginStart="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Number"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins"
+                        android:textSize="@dimen/_13ssp"
+                        android:drawablePadding="5dp"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins"
+                        android:textSize="@dimen/_13ssp"
+                        android:drawablePadding="5dp"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Payment:"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins"
+                        android:textSize="@dimen/_13ssp"
+                        android:drawablePadding="5dp"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/approve_btn"
+                        android:paddingStart="30dp"
+                        android:paddingEnd="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#31955B"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Approve"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/decline_btn"
+                        android:layout_marginStart="10dp"
+                        android:paddingStart="30dp"
+                        android:paddingEnd="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/red"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Decline"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -40,13 +41,22 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.sprtcoding.tourizal.Adapter.FireStoreAdapter.AmenitiesCottageAdapter;
+import com.sprtcoding.tourizal.Adapter.FireStoreAdapter.AmenitiesCottagePagerAdapter;
+import com.sprtcoding.tourizal.Adapter.FireStoreAdapter.AmenitiesKayakPagerAdapter;
+import com.sprtcoding.tourizal.Adapter.FireStoreAdapter.AmenitiesKayakinAdapter;
+import com.sprtcoding.tourizal.Adapter.FireStoreAdapter.AmenitiesPoolAdapter;
+import com.sprtcoding.tourizal.Adapter.FireStoreAdapter.AmenitiesPoolPagerAdapter;
+import com.sprtcoding.tourizal.Adapter.FireStoreAdapter.AmenitiesRoomPagerAdapter;
 import com.sprtcoding.tourizal.Adapter.FireStoreAdapter.AmenitiesRoomsAdapter;
 import com.sprtcoding.tourizal.Adapter.FireStoreAdapter.CommentListAdapter;
+import com.sprtcoding.tourizal.Adapter.FireStoreAdapter.PoolAdapterFS;
 import com.sprtcoding.tourizal.Adapter.UserFeaturedViewPagerAdapter;
 import com.sprtcoding.tourizal.FireStoreDB.DBQuery;
 import com.sprtcoding.tourizal.Model.CottageModel;
 import com.sprtcoding.tourizal.Model.FSModel.CottageModelFS;
 import com.sprtcoding.tourizal.Model.FSModel.FeaturedModelFS;
+import com.sprtcoding.tourizal.Model.FSModel.KayakinModel;
+import com.sprtcoding.tourizal.Model.FSModel.PoolModel;
 import com.sprtcoding.tourizal.Model.FSModel.RatingsList;
 import com.sprtcoding.tourizal.Model.FSModel.RoomFSModel;
 import com.sprtcoding.tourizal.Model.FeaturedPostModel;
@@ -56,6 +66,7 @@ import com.sprtcoding.tourizal.StreetView.KuulaStreetView;
 import com.sprtcoding.tourizal.Utility.NetworkChangeListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -78,19 +89,20 @@ public class UserResortInfo extends AppCompatActivity {
     private RatingBar _ratingBar, _addRatingValue;
     private MaterialButton _submitRatingBtn;
     private TextInputEditText _reviewET;
-    private LinearLayout _featuredLayout;
-    private RelativeLayout _updateLL, _roomsLL, _cottageLL;
-    private RecyclerView _rooms_rv, _cottage_rv;
-    private ViewPager featuredViewPager;
-    private TabLayout tabs;
-    private FirebaseDatabase mDb;
-    private DatabaseReference resortRef, featuredPostRef, userRef;
+    private LinearLayout _featuredLayout, _roomVP_LL, _cottageVP_LL, _poolVP_LL, _kayakVP_LL;
+    private RelativeLayout _updateLL, _roomsLL, _cottageLL, _poolLL, _kayakinLL;
+    private ViewPager featuredViewPager, roomVP, cottageVP, poolVP, kayakVP;
+    private TabLayout tabs, roomTabs, cottageTabs, poolTabs, kayakTabs;
+    FirebaseDatabase mDb;
+    DatabaseReference userRef;
     FirebaseFirestore DB;
     CollectionReference resortColRef;
     private FirebaseAuth mAuth;
     UserFeaturedViewPagerAdapter userFeaturedViewPagerAdapter;
-    AmenitiesRoomsAdapter amenitiesRoomsAdapter;
-    AmenitiesCottageAdapter amenitiesCottageAdapter;
+    AmenitiesCottagePagerAdapter amenitiesCottagePagerAdapter;
+    AmenitiesPoolPagerAdapter amenitiesPoolPagerAdapter;
+    AmenitiesKayakPagerAdapter amenitiesKayakPagerAdapter;
+    AmenitiesRoomPagerAdapter amenitiesRoomPagerAdapter;
     CommentListAdapter commentListAdapter;
     List<FeaturedPostModel> featuredPostModels;
     List<RoomsModel> roomsModels;
@@ -99,6 +111,9 @@ public class UserResortInfo extends AppCompatActivity {
     List<CottageModelFS> cottageModelFS;
     List<FeaturedModelFS> featuredModelFS;
     List<RatingsList> ratingsLists;
+    List<PoolModel> poolModelList;
+    List<KayakinModel> kayakinModelList;
+    ArrayList<String> imageUrls, roomIds, roomNames;
     Intent getExtraIntent;
     String OwnerID, ResortID, userName, featuredTitle;
     ProgressDialog _ratingLoading;
@@ -115,6 +130,8 @@ public class UserResortInfo extends AppCompatActivity {
         roomsModels = new ArrayList<>();
         cottageModels = new ArrayList<>();
         ratingsLists = new ArrayList<>();
+        poolModelList = new ArrayList<>();
+        kayakinModelList = new ArrayList<>();
 
         //fs
         roomFSModels = new ArrayList<>();
@@ -147,26 +164,26 @@ public class UserResortInfo extends AppCompatActivity {
         }
 
         mDb = FirebaseDatabase.getInstance();
-        resortRef = mDb.getReference("Resorts/" + OwnerID);
-        featuredPostRef = mDb.getReference("FeaturedPost");
         userRef = mDb.getReference("Users");
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser _user = mAuth.getCurrentUser();
 
-        userRef.child(_user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()) {
-                    userName = snapshot.child("Fullname").getValue(String.class);
+        if(_user != null) {
+            userRef.child(_user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.exists()) {
+                        userName = snapshot.child("Fullname").getValue(String.class);
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(UserResortInfo.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(UserResortInfo.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
         resortColRef.document(ResortID).get().addOnSuccessListener(documentSnapshot -> {
             if(documentSnapshot.exists()) {
@@ -208,49 +225,87 @@ public class UserResortInfo extends AppCompatActivity {
         //end of add rating
 
         //amenities rooms
-        LinearLayoutManager llmRooms = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-
-        _rooms_rv.setHasFixedSize(true);
-        _rooms_rv.setLayoutManager(llmRooms);
-
-        resortColRef.document(ResortID).collection("ROOMS")
-                        .addSnapshotListener((value, error) -> {
-                            if(error == null && value != null) {
-                                if(!value.isEmpty()) {
-                                    roomFSModels.clear();
-                                    for(QueryDocumentSnapshot doc : value) {
-                                        roomFSModels.add(new RoomFSModel(
-                                                doc.getString("OWNER_UID"),
-                                                doc.getString("RESORT_ID"),
-                                                doc.getString("ROOM_ID"),
-                                                doc.getString("ROOM_PIC_ID"),
-                                                doc.getString("ROOM_PIC_NAME"),
-                                                doc.getString("DESCRIPTION"),
-                                                doc.getString("DAY_AVAILABILITY"),
-                                                doc.getString("NIGHT_AVAILABILITY"),
-                                                doc.getString("ROOM_PHOTO_URL"),
-                                                doc.getLong("ROOM_NO").intValue(),
-                                                doc.getLong("DAY_PRICE").intValue(),
-                                                doc.getLong("NIGHT_PRICE").intValue()
-                                        ));
-                                    }
-                                    amenitiesRoomsAdapter = new AmenitiesRoomsAdapter(UserResortInfo.this, roomFSModels, this, getSupportFragmentManager());
-                                    _rooms_rv.setAdapter(amenitiesRoomsAdapter);
-                                } else {
-                                    _no_rooms_available.setVisibility(View.VISIBLE);
-                                    _rooms_rv.setVisibility(View.GONE);
-                                    _roomsLL.setVisibility(View.GONE);
-                                }
-                            }else {
-                                Toast.makeText(this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+        getAmenitiesRooms();
 
         //amenities cottage
-        LinearLayoutManager llmCottage = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        getAmenitiesCottage();
 
-        _cottage_rv.setHasFixedSize(true);
-        _cottage_rv.setLayoutManager(llmCottage);
+        //amenities pool
+        getAmenitiesPool();
+
+        //amenities kayak
+        getAmenitiesKayakin();
+
+        //featured post or updates
+
+        getFeaturedPost();
+
+        backBtn.setOnClickListener(view -> {
+            finish();
+        });
+
+    }
+
+    private void getAmenitiesRooms() {
+        roomTabs.setupWithViewPager(roomVP);
+        roomVP.setClipToPadding(false);
+        roomVP.setClipChildren(false);
+        roomVP.setPageMargin(30);
+
+        resortColRef.document(ResortID).collection("ROOMS")
+                .addSnapshotListener((value, error) -> {
+                    if(error == null && value != null) {
+                        if(!value.isEmpty()) {
+                            roomFSModels.clear();
+                            for(QueryDocumentSnapshot doc : value) {
+                                imageUrls = doc.contains("ROOM_PHOTO_URL")
+                                        ? (ArrayList<String>) doc.get("ROOM_PHOTO_URL")
+                                        : new ArrayList<>();
+
+                                roomNames = doc.contains("ROOM_PIC_NAME")
+                                        ? (ArrayList<String>) doc.get("ROOM_PIC_NAME")
+                                        : new ArrayList<>();
+
+                                roomIds = doc.contains("ROOM_PIC_ID")
+                                        ? (ArrayList<String>) doc.get("ROOM_PIC_ID")
+                                        : new ArrayList<>();
+
+                                roomFSModels.add(new RoomFSModel(
+                                        doc.getString("OWNER_UID"),
+                                        doc.getString("RESORT_ID"),
+                                        doc.getString("ROOM_ID"),
+                                        doc.getString("ROOM_PIC_ID"),
+                                        doc.getString("ROOM_PIC_NAME"),
+                                        doc.getString("DESCRIPTION"),
+                                        imageUrls,
+                                        doc.getLong("ROOM_NO").intValue(),
+                                        doc.getLong("MAX_DAY").intValue(),
+                                        doc.getLong("MAX_NIGHT").intValue(),
+                                        doc.getLong("NIGHT_PRICE").intValue(),
+                                        doc.getLong("NIGHT_PRICE").intValue(),
+                                        doc.getLong("DAY_EXCESS").intValue(),
+                                        doc.getLong("NIGHT_EXCESS").intValue()
+                                ));
+                            }
+                            amenitiesRoomPagerAdapter = new AmenitiesRoomPagerAdapter(this, roomFSModels, this, getSupportFragmentManager());
+                            roomVP.setAdapter(amenitiesRoomPagerAdapter);
+                        } else {
+                            _no_rooms_available.setVisibility(View.VISIBLE);
+                            _roomVP_LL.setVisibility(View.GONE);
+                            //_rooms_rv.setVisibility(View.GONE);
+                            _roomsLL.setVisibility(View.GONE);
+                        }
+                    }else {
+                        Toast.makeText(this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void getAmenitiesCottage() {
+        cottageTabs.setupWithViewPager(cottageVP);
+        cottageVP.setClipToPadding(false);
+        cottageVP.setClipChildren(false);
+        cottageVP.setPageMargin(30);
 
         resortColRef.document(ResortID).collection("COTTAGE")
                 .addSnapshotListener((value, error) -> {
@@ -270,20 +325,94 @@ public class UserResortInfo extends AppCompatActivity {
                                         doc.getLong("PRICE").intValue()
                                 ));
                             }
-                            amenitiesCottageAdapter = new AmenitiesCottageAdapter(UserResortInfo.this, cottageModelFS, getSupportFragmentManager());
-                            _cottage_rv.setAdapter(amenitiesCottageAdapter);
+                            amenitiesCottagePagerAdapter = new AmenitiesCottagePagerAdapter(UserResortInfo.this, cottageModelFS, getSupportFragmentManager());
+                            cottageVP.setAdapter(amenitiesCottagePagerAdapter);
                         } else {
                             _no_cottage_available.setVisibility(View.VISIBLE);
-                            _cottage_rv.setVisibility(View.GONE);
+                            _cottageVP_LL.setVisibility(View.GONE);
                             _cottageLL.setVisibility(View.GONE);
                         }
                     }else {
                         Toast.makeText(this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
 
-        //featured post or updates
+    private void getAmenitiesPool() {
+        poolTabs.setupWithViewPager(poolVP);
+        poolVP.setClipToPadding(false);
+        poolVP.setClipChildren(false);
+        poolVP.setPageMargin(30);
 
+        resortColRef.document(ResortID).collection("POOL")
+                .addSnapshotListener((value, error) -> {
+                    if(error == null && value != null) {
+                        if(!value.isEmpty()) {
+                            poolModelList.clear();
+                            for(QueryDocumentSnapshot doc : value) {
+                                poolModelList.add(new PoolModel(
+                                        doc.getString("POOL_IMG_URL"),
+                                        doc.getString("POOL_TYPE"),
+                                        doc.getString("POOL_INFO"),
+                                        doc.getString("POOL_DESC"),
+                                        doc.getString("POOL_PIC_ID"),
+                                        doc.getString("POOL_PIC_NAME"),
+                                        doc.getString("OWNER_UID"),
+                                        doc.getString("RESORT_ID"),
+                                        doc.getString("POOL_ID"),
+                                        doc.getDouble("POOL_SIZE"),
+                                        doc.getLong("POOL_NO").intValue()
+                                ));
+                            }
+                            amenitiesPoolPagerAdapter = new AmenitiesPoolPagerAdapter(this, poolModelList);
+                            poolVP.setAdapter(amenitiesPoolPagerAdapter);
+                        } else {
+                            _poolVP_LL.setVisibility(View.GONE);
+                            _poolLL.setVisibility(View.GONE);
+                        }
+                    }else {
+                        Toast.makeText(this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void getAmenitiesKayakin() {
+        kayakTabs.setupWithViewPager(kayakVP);
+        kayakVP.setClipToPadding(false);
+        kayakVP.setClipChildren(false);
+        kayakVP.setPageMargin(30);
+
+        resortColRef.document(ResortID).collection("KAYAKIN")
+                .addSnapshotListener((value, error) -> {
+                    if(error == null && value != null) {
+                        if(!value.isEmpty()) {
+                            kayakinModelList.clear();
+                            for(QueryDocumentSnapshot doc : value) {
+                                kayakinModelList.add(new KayakinModel(
+                                        doc.getString("OWNER_UID"),
+                                        doc.getString("RESORT_UID"),
+                                        doc.getString("KAYAKIN_UID"),
+                                        doc.getString("KAYAKIN_PIC_ID"),
+                                        doc.getString("KAYAKIN_PIC_NAME"),
+                                        doc.getString("KAYAKIN_IMG_URL"),
+                                        doc.getString("KAYAKIN_DESC"),
+                                        doc.getLong("KAYAKIN_NO").intValue(),
+                                        doc.getLong("RENT_PRICE").floatValue()
+                                ));
+                            }
+                            amenitiesKayakPagerAdapter = new AmenitiesKayakPagerAdapter(this, kayakinModelList);
+                            kayakVP.setAdapter(amenitiesKayakPagerAdapter);
+                        } else {
+                            _kayakVP_LL.setVisibility(View.GONE);
+                            _kayakinLL.setVisibility(View.GONE);
+                        }
+                    }else {
+                        Toast.makeText(this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void getFeaturedPost() {
         resortColRef.document(ResortID).collection("FEATURED")
                 .addSnapshotListener((value, error) -> {
                     if(error == null && value != null) {
@@ -319,11 +448,6 @@ public class UserResortInfo extends AppCompatActivity {
                         Toast.makeText(this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-
-        backBtn.setOnClickListener(view -> {
-            finish();
-        });
-
     }
 
     @SuppressLint("SetTextI18n")
@@ -350,6 +474,7 @@ public class UserResortInfo extends AppCompatActivity {
     @SuppressLint({"DefaultLocale", "SetTextI18n"})
     private void getRatings() {
         CollectionReference resortColRef = DB.collection("RATINGS");
+        DecimalFormat decimalFormat = new DecimalFormat("#.#");
 
         resortColRef.whereEqualTo("RESORT_ID", ResortID)
                         .addSnapshotListener((value, error) -> {
@@ -364,7 +489,7 @@ public class UserResortInfo extends AppCompatActivity {
                                     float avgRating = ratingSum/numberOfReviews;
 
                                     _ratingBar.setRating(avgRating);
-                                    _ratingValue.setText(String.format("%.2f", avgRating));
+                                    _ratingValue.setText(String.format("%.1f", avgRating));
                                     _totalRatingNumber.setText("/"+numberOfReviews);
                                     _seeComment.setText(numberOfReviews + " Comment/s");
                                 }
@@ -509,6 +634,8 @@ public class UserResortInfo extends AppCompatActivity {
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) RecyclerView comment_rv = commentAlertDialog.findViewById(R.id.comments_rv);
 
         LinearLayoutManager llmRooms = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        llmRooms.setReverseLayout(true);
+        llmRooms.setStackFromEnd(true);
         comment_rv.setHasFixedSize(true);
         comment_rv.setLayoutManager(llmRooms);
 
@@ -583,6 +710,24 @@ public class UserResortInfo extends AppCompatActivity {
     }
 
     private void _var() {
+        _roomVP_LL = findViewById(R.id.roomVP_LL);
+        roomVP = findViewById(R.id.roomViewPager);
+        roomTabs = findViewById(R.id.roomTabs);
+
+        _cottageVP_LL = findViewById(R.id.cottageVP_LL);
+        cottageVP = findViewById(R.id.cottageViewPager);
+        cottageTabs = findViewById(R.id.cottageTabs);
+
+        _poolVP_LL = findViewById(R.id.poolVP_LL);
+        poolVP = findViewById(R.id.poolViewPager);
+        poolTabs = findViewById(R.id.poolTabs);
+
+        _kayakVP_LL = findViewById(R.id.kayakVP_LL);
+        kayakVP = findViewById(R.id.kayakViewPager);
+        kayakTabs = findViewById(R.id.kayakTabs);
+
+        _poolLL = findViewById(R.id.poolLL);
+        _kayakinLL = findViewById(R.id.kayakinLL);
         _tour_view_btn = findViewById(R.id.tour_view_btn);
         _resortPic = findViewById(R.id.resortPic);
         _resortName = findViewById(R.id.resortName);
@@ -592,8 +737,6 @@ public class UserResortInfo extends AppCompatActivity {
         _ratingBar = findViewById(R.id.ratingBar);
         featuredViewPager = findViewById(R.id.featuredViewPager);
         tabs = findViewById(R.id.tabs);
-        _rooms_rv = findViewById(R.id.rooms_rv);
-        _cottage_rv = findViewById(R.id.cottage_rv);
         backBtn = findViewById(R.id.backBtn);
         _no_updates_available = findViewById(R.id.no_updates_available);
         _no_cottage_available = findViewById(R.id.no_cottage_available);

@@ -58,6 +58,8 @@ public class ReservationFragment extends Fragment {
         reservedColRef = db.collection("RESERVATION");
 
         LinearLayoutManager llmRooms = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        llmRooms.setReverseLayout(true);
+        llmRooms.setStackFromEnd(true);
 
         reserved_rv.setHasFixedSize(true);
         reserved_rv.setLayoutManager(llmRooms);
@@ -88,8 +90,11 @@ public class ReservationFragment extends Fragment {
                                             doc.getString("DAYTIME"),
                                             doc.getString("USER_PHOTO_URL"),
                                             doc.getString("AMENITIES_TYPE"),
+                                            doc.getString("HOURS_STAYED"),
                                             doc.getLong("PRICE").longValue(),
                                             doc.getLong("AMENITIES_NO").intValue(),
+                                            doc.getLong("DAYS_STAYED").intValue(),
+                                            doc.getLong("GUEST_NO").intValue(),
                                             doc.getBoolean("READ").booleanValue()
                                     ));
                                 }

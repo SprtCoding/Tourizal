@@ -70,6 +70,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 public class AddResortPage extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -137,6 +138,7 @@ public class AddResortPage extends AppCompatActivity {
             resortEntrance = getIntent().getStringExtra("resortEntrance");
             picName = getIntent().getStringExtra("resortPicName");
             resortID = getIntent().getStringExtra("resortID");
+
             if(isUpdate) {
                 _title.setText("Update Resort");
                 Picasso.get().load(resortPic).placeholder(R.drawable.resort).into(_resortPhoto);
@@ -200,7 +202,7 @@ public class AddResortPage extends AppCompatActivity {
 
                 uploadTask.continueWithTask(task -> {
                     if (!task.isSuccessful()) {
-                        throw task.getException();
+                        throw Objects.requireNonNull(task.getException());
                     }
                     return resortRef.getDownloadUrl();
                 }).addOnCompleteListener(task -> {
@@ -216,7 +218,7 @@ public class AddResortPage extends AppCompatActivity {
                         }
                     } else {
                         // Handle the case when the upload task is not successful
-                        Toast.makeText(AddResortPage.this, "Upload failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddResortPage.this, "Upload failed: " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                         _loading.dismiss();
                     }
                 });

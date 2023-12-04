@@ -1,26 +1,63 @@
 package com.sprtcoding.tourizal.Model.FSModel;
 
+import java.util.ArrayList;
+
 public class RoomFSModel {
-    String OWNER_UID, RESORT_ID, ROOM_ID, ROOM_PIC_ID, ROOM_PIC_NAME, DESCRIPTION, DAY_AVAILABILITY, NIGHT_AVAILABILITY, ROOM_PHOTO_URL;
-    int ROOM_NO;
-    float DAY_PRICE, NIGHT_PRICE;
+    String OWNER_UID, RESORT_ID, ROOM_ID, DESCRIPTION, DAY_AVAILABILITY, NIGHT_AVAILABILITY;
+    ArrayList<String> ROOM_PHOTO_URL;
+    int ROOM_NO, MAX_DAY, MAX_NIGHT;
+    float DAY_PRICE, NIGHT_PRICE, DAY_EXCESS, NIGHT_EXCESS;
 
     public RoomFSModel() {
     }
 
-    public RoomFSModel(String OWNER_UID, String RESORT_ID, String ROOM_ID, String ROOM_PIC_ID, String ROOM_PIC_NAME, String DESCRIPTION, String DAY_AVAILABILITY, String NIGHT_AVAILABILITY, String ROOM_PHOTO_URL, int ROOM_NO, float DAY_PRICE, float NIGHT_PRICE) {
+    public RoomFSModel(String OWNER_UID, String RESORT_ID, String ROOM_ID, String DESCRIPTION, String DAY_AVAILABILITY, String NIGHT_AVAILABILITY, ArrayList<String> ROOM_PHOTO_URL, int ROOM_NO, int MAX_DAY, int MAX_NIGHT, float DAY_PRICE, float NIGHT_PRICE, float DAY_EXCESS, float NIGHT_EXCESS) {
         this.OWNER_UID = OWNER_UID;
         this.RESORT_ID = RESORT_ID;
         this.ROOM_ID = ROOM_ID;
-        this.ROOM_PIC_ID = ROOM_PIC_ID;
-        this.ROOM_PIC_NAME = ROOM_PIC_NAME;
         this.DESCRIPTION = DESCRIPTION;
         this.DAY_AVAILABILITY = DAY_AVAILABILITY;
         this.NIGHT_AVAILABILITY = NIGHT_AVAILABILITY;
         this.ROOM_PHOTO_URL = ROOM_PHOTO_URL;
         this.ROOM_NO = ROOM_NO;
+        this.MAX_DAY = MAX_DAY;
+        this.MAX_NIGHT = MAX_NIGHT;
         this.DAY_PRICE = DAY_PRICE;
         this.NIGHT_PRICE = NIGHT_PRICE;
+        this.DAY_EXCESS = DAY_EXCESS;
+        this.NIGHT_EXCESS = NIGHT_EXCESS;
+    }
+
+    public int getMAX_DAY() {
+        return MAX_DAY;
+    }
+
+    public void setMAX_DAY(int MAX_DAY) {
+        this.MAX_DAY = MAX_DAY;
+    }
+
+    public int getMAX_NIGHT() {
+        return MAX_NIGHT;
+    }
+
+    public void setMAX_NIGHT(int MAX_NIGHT) {
+        this.MAX_NIGHT = MAX_NIGHT;
+    }
+
+    public float getDAY_EXCESS() {
+        return DAY_EXCESS;
+    }
+
+    public void setDAY_EXCESS(float DAY_EXCESS) {
+        this.DAY_EXCESS = DAY_EXCESS;
+    }
+
+    public float getNIGHT_EXCESS() {
+        return NIGHT_EXCESS;
+    }
+
+    public void setNIGHT_EXCESS(float NIGHT_EXCESS) {
+        this.NIGHT_EXCESS = NIGHT_EXCESS;
     }
 
     public String getOWNER_UID() {
@@ -47,22 +84,6 @@ public class RoomFSModel {
         this.ROOM_ID = ROOM_ID;
     }
 
-    public String getROOM_PIC_ID() {
-        return ROOM_PIC_ID;
-    }
-
-    public void setROOM_PIC_ID(String ROOM_PIC_ID) {
-        this.ROOM_PIC_ID = ROOM_PIC_ID;
-    }
-
-    public String getROOM_PIC_NAME() {
-        return ROOM_PIC_NAME;
-    }
-
-    public void setROOM_PIC_NAME(String ROOM_PIC_NAME) {
-        this.ROOM_PIC_NAME = ROOM_PIC_NAME;
-    }
-
     public String getDESCRIPTION() {
         return DESCRIPTION;
     }
@@ -87,14 +108,6 @@ public class RoomFSModel {
         this.NIGHT_AVAILABILITY = NIGHT_AVAILABILITY;
     }
 
-    public String getROOM_PHOTO_URL() {
-        return ROOM_PHOTO_URL;
-    }
-
-    public void setROOM_PHOTO_URL(String ROOM_PHOTO_URL) {
-        this.ROOM_PHOTO_URL = ROOM_PHOTO_URL;
-    }
-
     public int getROOM_NO() {
         return ROOM_NO;
     }
@@ -117,5 +130,13 @@ public class RoomFSModel {
 
     public void setNIGHT_PRICE(float NIGHT_PRICE) {
         this.NIGHT_PRICE = NIGHT_PRICE;
+    }
+
+    public ArrayList<String> getROOM_PHOTO_URL() {
+        return ROOM_PHOTO_URL;
+    }
+
+    public void setROOM_PHOTO_URL(ArrayList<String> ROOM_PHOTO_URL) {
+        this.ROOM_PHOTO_URL = ROOM_PHOTO_URL;
     }
 }

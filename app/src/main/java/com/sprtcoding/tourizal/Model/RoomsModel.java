@@ -1,13 +1,16 @@
 package com.sprtcoding.tourizal.Model;
 
+import java.util.ArrayList;
+
 public class RoomsModel {
-    String ResortsID, RoomsID, RoomPicID, RoomPicName, RoomNumber, Description, DayAvailability, DayPrice, NightAvailability, NightPrice, RoomsPhotoURL;
+    String ResortsID, RoomsID, RoomPicID, RoomPicName, RoomNumber, Description, DayAvailability, DayPrice, NightAvailability, NightPrice;
+    ArrayList<String> ImageUrls;
 
     public RoomsModel() {
 
     }
 
-    public RoomsModel(String resortsID, String roomsID, String roomPicID, String roomPicName, String roomNumber, String description, String dayAvailability, String dayPrice, String nightAvailability, String nightPrice, String roomsPhotoURL) {
+    public RoomsModel(String resortsID, String roomsID, String roomPicID, String roomPicName, String roomNumber, String description, String dayAvailability, String dayPrice, String nightAvailability, String nightPrice, ArrayList<String> imageUrls) {
         ResortsID = resortsID;
         RoomsID = roomsID;
         RoomPicID = roomPicID;
@@ -18,7 +21,15 @@ public class RoomsModel {
         DayPrice = dayPrice;
         NightAvailability = nightAvailability;
         NightPrice = nightPrice;
-        RoomsPhotoURL = roomsPhotoURL;
+        ImageUrls = imageUrls;
+    }
+
+    public ArrayList<String> getImageUrls() {
+        return ImageUrls;
+    }
+
+    public void setImageUrls(ArrayList<String> imageUrls) {
+        ImageUrls = imageUrls;
     }
 
     public String getRoomPicID() {
@@ -99,13 +110,5 @@ public class RoomsModel {
 
     public void setNightPrice(String nightPrice) {
         NightPrice = nightPrice;
-    }
-
-    public String getRoomsPhotoURL() {
-        return RoomsPhotoURL;
-    }
-
-    public void setRoomsPhotoURL(String roomsPhotoURL) {
-        RoomsPhotoURL = roomsPhotoURL;
     }
 }

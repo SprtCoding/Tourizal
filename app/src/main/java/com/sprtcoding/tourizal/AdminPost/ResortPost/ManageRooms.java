@@ -78,6 +78,8 @@ public class ManageRooms extends AppCompatActivity {
         _user = mAuth.getCurrentUser();
 
         LinearLayoutManager llm = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        llm.setReverseLayout(true);
+        llm.setStackFromEnd(true);
         _admin_rooms_rv.setHasFixedSize(true);
         _admin_rooms_rv.setLayoutManager(llm);
 

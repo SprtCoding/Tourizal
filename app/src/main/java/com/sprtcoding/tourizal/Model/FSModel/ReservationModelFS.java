@@ -1,15 +1,15 @@
 package com.sprtcoding.tourizal.Model.FSModel;
 
 public class ReservationModelFS {
-    String OWNER_UID,MY_UID,RESORT_ID,AMENITIES_ID,RESERVED_ID,NAME_OF_USER,CONTACT_OF_USER,LOCATION_OF_USER,DATE_RESERVATION,TIME,DATE,STATUS,ROOM_PHOTO_URL,DAYTIME,USER_PHOTO_URL,AMENITIES_TYPE;
+    String OWNER_UID,MY_UID,RESORT_ID,AMENITIES_ID,RESERVED_ID,NAME_OF_USER,CONTACT_OF_USER,LOCATION_OF_USER,DATE_RESERVATION,TIME,DATE,STATUS,ROOM_PHOTO_URL,DAYTIME,USER_PHOTO_URL,AMENITIES_TYPE,HOURS_STAYED;
     float PRICE;
-    int AMENITIES_NO;
+    int AMENITIES_NO, NO_OF_DAYS_STAYED, GUEST_NO;
     boolean READ;
 
     public ReservationModelFS() {
     }
 
-    public ReservationModelFS(String OWNER_UID, String MY_UID, String RESORT_ID, String AMENITIES_ID, String RESERVED_ID, String NAME_OF_USER, String CONTACT_OF_USER, String LOCATION_OF_USER, String DATE_RESERVATION, String TIME, String DATE, String STATUS, String ROOM_PHOTO_URL, String DAYTIME, String USER_PHOTO_URL, String AMENITIES_TYPE, float PRICE, int AMENITIES_NO, boolean READ) {
+    public ReservationModelFS(String OWNER_UID, String MY_UID, String RESORT_ID, String AMENITIES_ID, String RESERVED_ID, String NAME_OF_USER, String CONTACT_OF_USER, String LOCATION_OF_USER, String DATE_RESERVATION, String TIME, String DATE, String STATUS, String ROOM_PHOTO_URL, String DAYTIME, String USER_PHOTO_URL, String AMENITIES_TYPE, String HOURS_STAYED, float PRICE, int AMENITIES_NO, int NO_OF_DAYS_STAYED, int GUEST_NO, boolean READ) {
         this.OWNER_UID = OWNER_UID;
         this.MY_UID = MY_UID;
         this.RESORT_ID = RESORT_ID;
@@ -26,9 +26,36 @@ public class ReservationModelFS {
         this.DAYTIME = DAYTIME;
         this.USER_PHOTO_URL = USER_PHOTO_URL;
         this.AMENITIES_TYPE = AMENITIES_TYPE;
+        this.HOURS_STAYED = HOURS_STAYED;
         this.PRICE = PRICE;
         this.AMENITIES_NO = AMENITIES_NO;
+        this.NO_OF_DAYS_STAYED = NO_OF_DAYS_STAYED;
+        this.GUEST_NO = GUEST_NO;
         this.READ = READ;
+    }
+
+    public String getHOURS_STAYED() {
+        return HOURS_STAYED;
+    }
+
+    public void setHOURS_STAYED(String HOURS_STAYED) {
+        this.HOURS_STAYED = HOURS_STAYED;
+    }
+
+    public int getNO_OF_DAYS_STAYED() {
+        return NO_OF_DAYS_STAYED;
+    }
+
+    public void setNO_OF_DAYS_STAYED(int NO_OF_DAYS_STAYED) {
+        this.NO_OF_DAYS_STAYED = NO_OF_DAYS_STAYED;
+    }
+
+    public int getGUEST_NO() {
+        return GUEST_NO;
+    }
+
+    public void setGUEST_NO(int GUEST_NO) {
+        this.GUEST_NO = GUEST_NO;
     }
 
     public String getOWNER_UID() {

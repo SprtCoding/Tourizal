@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@color/white"
     tools:context=".AdminPost.ResortPost.AddRoomsPage">
 
     <androidx.cardview.widget.CardView
@@ -33,6 +33,18 @@
                 android:src="@drawable/baseline_arrow_back_24"
                 android:contentDescription="@string/app_name"/>
 
+            <TextView
+                android:id="@+id/title"
+                android:layout_toEndOf="@id/backBtn"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textAlignment="center"
+                android:text="Add Rooms"
+                android:textSize="@dimen/_14ssp"
+                android:textColor="@color/white" />
+
             <ImageView
                 android:id="@+id/header_logo"
                 android:layout_alignParentEnd="true"
@@ -51,7 +63,6 @@
         android:layout_height="match_parent"
         android:scrollbars="none"
         android:layout_below="@id/appBar"
-        android:layout_marginTop="30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true">
@@ -63,69 +74,52 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_bold"
-                android:textAlignment="center"
-                android:text="Add Rooms"
-                android:textSize="@dimen/_25ssp"
-                android:textColor="@color/white" />
-
-            <androidx.cardview.widget.CardView
-                android:layout_marginTop="@dimen/_30sdp"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_190sdp"
-                app:cardCornerRadius="10dp"
-                app:cardBackgroundColor="@color/light_blue">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
 
-                <LinearLayout
+                <androidx.viewpager.widget.ViewPager
+                    android:padding="10dp"
+                    android:id="@+id/imagesVP"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    >
+                    android:layout_height="220dp"/>
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_150sdp"
-                        android:src="@drawable/resort"
-                        android:scaleType="fitXY"
-                        android:id="@+id/RoomsPhoto"/>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="5dp"
+                    app:cardBackgroundColor="@color/white">
 
-                    <LinearLayout
+                    <RelativeLayout
+                        android:padding="20dp"
+                        android:id="@+id/pickImagesBtn"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="end|center"
-                        android:orientation="horizontal">
+                        >
 
                         <TextView
-                            android:id="@+id/openFile"
-                            android:padding="10dp"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:background="@color/light_blue"
-                            android:text="Choose file"
-                            android:gravity="center"
-                            android:fontFamily="@font/poppins_medium"
+                            android:layout_height="wrap_content"
+                            android:text="Add Photos"
+                            android:fontFamily="@font/poppins_bold"
                             android:textSize="@dimen/_12ssp"
-                            android:textColor="@color/white"
-                            android:letterSpacing=".1"
-                            android:drawablePadding="10dp"
-                            app:drawableStartCompat="@drawable/baseline_folder_24"
-                            app:drawableTint="@color/white" />
+                            android:layout_centerInParent="true"
+                            android:textColor="@color/black"/>
 
-                    </LinearLayout>
+                    </RelativeLayout>
 
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginTop="@dimen/_15sdp"
                 android:hint="Room Number"
                 app:hintTextColor="#2E2E2E"
                 android:textColorHint="#2E2E2E"
-                app:startIconDrawable="@drawable/home_18"
+                app:startIconDrawable="@drawable/bed_alt_18"
                 android:layout_width="match_parent"
                 app:endIconMode="clear_text"
                 app:helperText="Ex. 1"
@@ -206,9 +200,10 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/from_day_btn"
-                        android:layout_width="@dimen/_130sdp"
+                        android:layout_width="0dp"
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:paddingTop="15dp"
                         android:paddingBottom="15dp"
                         android:fontFamily="@font/poppins_medium"
@@ -226,7 +221,8 @@
                     <com.google.android.material.button.MaterialButton
                         android:layout_marginStart="5dp"
                         android:id="@+id/to_day_btn"
-                        android:layout_width="@dimen/_130sdp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
@@ -270,6 +266,72 @@
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:hint="Maximum"
+                    app:hintTextColor="#2E2E2E"
+                    android:textColorHint="#2E2E2E"
+                    app:startIconDrawable="@drawable/edit_square"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    app:endIconMode="clear_text"
+                    app:helperText="Ex. 1"
+                    app:helperTextTextColor="@color/red"
+                    app:boxStrokeColor="@color/blue"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:startIconTint="@color/blue"
+                    app:endIconTint="@color/blue"
+                    app:boxBackgroundMode="outline"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/maxDayET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:inputType="number"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11ssp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:hint="In Excess"
+                    app:hintTextColor="#2E2E2E"
+                    android:textColorHint="#2E2E2E"
+                    app:startIconDrawable="@drawable/peso_small"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    app:endIconMode="clear_text"
+                    app:helperText="Ex. 1000.00"
+                    app:helperTextTextColor="@color/red"
+                    app:boxStrokeColor="@color/blue"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:startIconTint="@color/blue"
+                    app:endIconTint="@color/blue"
+                    app:boxBackgroundMode="outline"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/excessDayET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11ssp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 >
 
@@ -295,7 +357,8 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/from_night_btn"
-                        android:layout_width="@dimen/_130sdp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                         android:layout_height="wrap_content"
                         android:paddingTop="15dp"
@@ -314,7 +377,8 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/to_night_btn"
-                        android:layout_width="@dimen/_130sdp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
@@ -353,6 +417,72 @@
                     android:textSize="@dimen/_11ssp" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:hint="Maximum"
+                    app:hintTextColor="#2E2E2E"
+                    android:textColorHint="#2E2E2E"
+                    app:startIconDrawable="@drawable/edit_square"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    app:endIconMode="clear_text"
+                    app:helperText="Ex. 1"
+                    app:helperTextTextColor="@color/red"
+                    app:boxStrokeColor="@color/blue"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:startIconTint="@color/blue"
+                    app:endIconTint="@color/blue"
+                    app:boxBackgroundMode="outline"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/maxNightET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:inputType="number"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11ssp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:hint="In Excess"
+                    app:hintTextColor="#2E2E2E"
+                    android:textColorHint="#2E2E2E"
+                    app:startIconDrawable="@drawable/peso_small"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    app:endIconMode="clear_text"
+                    app:helperText="Ex. 1000.00"
+                    app:helperTextTextColor="@color/red"
+                    app:boxStrokeColor="@color/blue"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:startIconTint="@color/blue"
+                    app:endIconTint="@color/blue"
+                    app:boxBackgroundMode="outline"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/excessNightET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11ssp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/postBtn"

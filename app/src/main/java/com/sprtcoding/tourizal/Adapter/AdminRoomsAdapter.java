@@ -59,7 +59,7 @@ public class AdminRoomsAdapter extends RecyclerView.Adapter<AdminRoomsAdapter.Ro
         resortRef = mDb.getReference("Resorts/"+_user.getUid());
         StorageReference roomPhotoRef = FirebaseStorage.getInstance().getReference("RoomsPhotos/");
 
-        Picasso.get().load(rooms.getRoomsPhotoURL()).into(holder._roomPhoto);
+        Picasso.get().load(rooms.getImageUrls().get(position)).into(holder._roomPhoto);
         holder._roomName.setText(rooms.getRoomNumber());
         holder._roomDescription.setText(rooms.getDescription());
 
